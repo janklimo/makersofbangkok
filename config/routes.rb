@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'static_controller#landing'
+  root 'static#landing'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
