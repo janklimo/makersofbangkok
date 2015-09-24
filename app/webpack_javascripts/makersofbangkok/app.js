@@ -1,7 +1,15 @@
-// import React from 'react';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Router, Route } from 'react-router';
 
-let text = 'this is sweeeet!';
-let a = 3;
-let b = 4;
+const LandingPage = React.createClass({
+  render() {
+    return <div>Neat!</div>;
+  }
+});
 
-console.log(text, a * b);
+ReactDOM.render((
+  <Router>
+    <Route path="/" component={LandingPage} />
+  </Router>
+), document.getElementById('app'));
