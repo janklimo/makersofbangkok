@@ -24,8 +24,8 @@ module.exports = {
   // dependencies listed and bundling them into the output file.
   entry: {
     vendor: [
-      'react'
-      // 'flux',
+      'react',
+      'jquery'
       // 'immutable'
     ],
     app: [
@@ -43,15 +43,13 @@ module.exports = {
     path: path.join(__dirname, '..', '/app/assets/javascripts')
   },
 
-  externals: {
-    // require("jquery") is external and available on the global var jQuery
-    "jquery": "jQuery"
-  },
-
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor_wp_bundle.js')
-    // do not stop if linting errors are found
-    // new webpack.NoErrorsPlugin()
+    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor_wp_bundle.js'),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery"
+    })
   ],
 
   resolve: {

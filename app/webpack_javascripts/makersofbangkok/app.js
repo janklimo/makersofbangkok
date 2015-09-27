@@ -4,7 +4,9 @@ import { Router, Route } from 'react-router';
 
 const LandingPage = React.createClass({
   render() {
-    return <div>Neat!</div>;
+    let windowHeight = $(window).height();
+    return <section id="home" style={{height: windowHeight}}>
+    </section>;
   }
 });
 

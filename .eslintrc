@@ -6,9 +6,11 @@ plugins:
 
 env:
   node: true
+  jquery: true
   es6: true
 
 globals:
+  window: true
   document: false
   React: false
   ReactDOM: false
