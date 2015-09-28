@@ -1,6 +1,72 @@
 #home {
-  background: #0F2B37 asset-url('01.jpg') center center repeat;
+  background: #0F2B37 asset-url('01.jpg');
   background-size: cover;
   background-position: center top;
   height: 400px;
+  color: #FFFFFF;
+}
+
+.logo-container {
+  margin-top: 110px;
+
+  @media(max-width:767px){
+    margin-top: 25px;
+  }
+
+  #logo {
+    max-width: 95px;
+  }
+}
+
+.taglines {
+  h2 {
+    font-family: Georgia;
+    font-style: italic;
+  }
+
+  h1{
+    font-size: 60px;
+    font-weight: bold;
+    text-shadow: 1px 2px #2D2D2D;
+    margin-bottom: 30px;
+  }
+}
+
+.intro {
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+  padding: 20px 10px;
+}
+
+.cta {
+  margin-top: 35px;
+}
+
+.btn-main {
+  width: 140px;
+  line-height: 28px;
+  text-align: center;
+  font-size: 15px;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  background: #E74C3C;
+  border: 2px solid #E74C3C;
+  text-transform: uppercase;
+  font-weight: 700;
+  top: -4px;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+
+  &:active, &:focus, &:hover {
+    background: #E74C3C;
+    color: #FFF;
+    border: 2px solid #FFF;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+  }
 }
