@@ -20,7 +20,7 @@ const LandingPage = React.createClass({
         </div>
         <div className="row">
           <div className="intro text-center">
-            <p>We're entrepreneurs, programmers, designers,
+            <p>We&#39;re entrepreneurs, programmers, designers,
                photographers, event organizers.<br />
                What we have in common is our passion for building,
                creating, and making things happen.
