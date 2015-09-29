@@ -3,9 +3,24 @@ import ReactDOM from 'react-dom';
 import { Router, Route } from 'react-router';
 
 const LandingPage = React.createClass({
+  getInitialState() {
+    return { windowHeight: window.innerHeight };
+  },
+
+  handleResize() {
+    this.setState({ windowHeight: window.innerHeight });
+  },
+
+  componentDidMount() {
+    window.addEventListener('resize', this.handleResize);
+  },
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  },
   render() {
-    let windowHeight = $(window).height();
-    return <section id="home" style={{height: windowHeight}}>
+    let bgStyle = { height: this.state.windowHeight };
+    return <section id="home" style={ bgStyle }>
       <div className="container">
         <div className="row">
           <div className="logo-container text-center">
