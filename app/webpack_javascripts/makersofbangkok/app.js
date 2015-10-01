@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route } from 'react-router';
+const s3 = 'https://s3-ap-southeast-1.amazonaws.com/makersofbangkok/';
 
 const LandingPage = React.createClass({
   getInitialState() {
@@ -24,7 +25,7 @@ const LandingPage = React.createClass({
       <div className="container">
         <div className="row">
           <div className="logo-container text-center">
-            <img id="logo" src="assets/logo.png" />
+            <img id="logo" src={`${s3}logo.png`} />
           </div>
         </div>
         <div className="row">
