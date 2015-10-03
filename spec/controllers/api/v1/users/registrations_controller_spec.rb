@@ -8,6 +8,8 @@ describe Api::V1::Users::RegistrationsController, type: :request do
         user = User.find_by(email: 'test@example.com')
         expect(user).not_to be_nil
         expect(user.referrer_id).to eq 1
+        expect(response_body['meta']).to be_nil
+        expect(response_body['user']['referrer_id']).to eq 1
       end
     end
 
@@ -19,6 +21,7 @@ describe Api::V1::Users::RegistrationsController, type: :request do
         it 'does not create a user' do
           user = User.find_by(email: 'test@example.com')
           expect(user).to be_nil
+          expect(response_body['meta']['errors']).to include 'password'
         end
       end
       context 'missing referrer' do
@@ -28,11 +31,10 @@ describe Api::V1::Users::RegistrationsController, type: :request do
         it 'does not create a user' do
           user = User.find_by(email: 'test@example.com')
           expect(user).to be_nil
+          expect(response_body['meta']['errors']).to include 'referrer_id'
         end
       end
     end
-
-    # TODO: test this returns correct JSON for success and failures
 
     def user_params(overrides={})
       {
