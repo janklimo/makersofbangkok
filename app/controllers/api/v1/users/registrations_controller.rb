@@ -32,7 +32,9 @@ module Api
       end
 
       def configure_permitted_parameters
-        devise_parameter_sanitizer.for(:sign_up) << [ :referrer_id ]
+        devise_parameter_sanitizer.for(:sign_up) << [
+          :first_name, :last_name, :referrer_id
+        ]
       end
 
     end

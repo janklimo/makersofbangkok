@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
 
-  validates_presence_of :referrer_id
+  validates_presence_of :first_name, :last_name, :referrer_id
 
   def update_tokens(client_id, token)
     with_lock do

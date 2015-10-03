@@ -192,6 +192,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.8)
+  bcrypt
   bootstrap-sass (~> 3.3.5)
   cancancan (~> 1.10)
   capybara

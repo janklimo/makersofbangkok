@@ -7,8 +7,9 @@ describe Api::V1::UsersController, type: :request do
       end
       it 'returns user id and name' do
         expect(response_body['user']['id']).to eq @user.id
+        expect(response_body['user']['first_name']).to eq @user.first_name
+        # only expose what we need
         expect(response_body['user']).not_to include 'email'
-        # TODO: return first name
       end
       it_behaves_like 'a successful resource request', 'user'
     end
