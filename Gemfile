@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.2'
+ruby '2.2.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
@@ -22,6 +22,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise_token_auth', '0.1.32.beta9'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'active_model_serializers', '~> 0.8'
+gem 'cancancan', '~> 1.10'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -49,5 +50,4 @@ group :development do
 end
 
 gem 'rails_12factor', group: :production
-gem 'bcrypt-ruby', require: 'bcrypt'
 
