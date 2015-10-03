@@ -18,8 +18,11 @@ RSpec.configure do |config|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
 
+  config.include FactoryGirl::Syntax::Methods
+
   # include helpers in specs where needed
   config.include Support::ResponseHelpers, type: :request
+  config.include Support::AuthHelpers, type: :request
 
   config.mock_with :rspec
 

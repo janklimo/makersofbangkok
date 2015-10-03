@@ -1,23 +1,31 @@
 describe Api::V1::UsersController, type: :request do
-  before do
-    @user = create(:user)
-  end
-
-  describe 'PUT /users/verify' do
-    context 'requested user does not exist' do
-      before { put "/api/v1/users/verify", user_params, auth_headers(@user) }
-      it 'updates information of users' do
-        expect(@user.reload.first_name).to eq 'Jon'
-        expect(response_body['user']['first_name']).to eq 'Jon'
+  describe 'POST /users/verify' do
+    context 'requested user exists' do
+      before do
+        @user = create(:user, email: 'jon@example.com')
+        post "/api/v1/users/verify", user_params
+      end
+      it 'returns user id and name' do
+        expect(response_body['user']['id']).to eq @user.id
+        expect(response_body['user']).not_to include 'email'
+        # TODO: return first name
       end
       it_behaves_like 'a successful resource request', 'user'
     end
 
+    context 'requested user is not found' do
+      before do
+        @user = create(:user, email: 'jon_snow@example.com')
+        post "/api/v1/users/verify", user_params
+      end
+      it 'returns an error' do
+        expect(response_body['meta']['error']).to match 'not found'
+      end
+    end
+
     def user_params
       {
-        user: {
-          email: 'jon@example.com'
-        }
+        user: { email: 'jon@example.com' }
       }
     end
   end
