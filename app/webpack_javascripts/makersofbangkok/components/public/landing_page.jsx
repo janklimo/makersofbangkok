@@ -1,11 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Router, Route } from 'react-router';
-const s3 = 'https://s3-ap-southeast-1.amazonaws.com/makersofbangkok/';
+import SignupModal from './signup_modal';
+const s3 = 'https://s3-ap-southeast-1.amazonaws.com/makersofbangkok';
 
-const LandingPage = React.createClass({
+export default React.createClass({
   getInitialState() {
-    return { windowHeight: window.innerHeight };
+    return {
+      windowHeight: window.innerHeight,
+      showModal: false
+    };
+  },
+
+  closeModal() {
+    this.setState({ showModal: false });
+  },
+
+  openModal() {
+    this.setState({ showModal: true });
   },
 
   handleResize() {
@@ -19,13 +29,14 @@ const LandingPage = React.createClass({
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleResize);
   },
+
   render() {
     let bgStyle = { height: this.state.windowHeight };
     return <section id="home" style={ bgStyle }>
       <div className="container">
         <div className="row">
           <div className="logo-container text-center">
-            <img id="logo" src={`${s3}logo.png`} />
+            <img id="logo" src={`${s3}/logo.png`} />
           </div>
         </div>
         <div className="row">
@@ -37,25 +48,22 @@ const LandingPage = React.createClass({
         <div className="row">
           <div className="intro text-center">
             <p>We&#39;re entrepreneurs, programmers, designers,
-               photographers, event organizers.<br />
-               What we have in common is our passion for building,
-               creating, and making things happen.
-               <br /><br />
-               Sounds like you?</p>
+              photographers, event organizers.<br />
+              What we have in common is our passion for building,
+              creating, and making things happen.
+              <br /><br />
+              Sounds like you?</p>
           </div>
         </div>
         <div className="row">
           <div className="cta text-center">
-            <a href="#" className="btn btn-main">Join Us!</a>
+            <a href="#" className="btn btn-main" onClick={this.openModal}>
+              Join Us!
+            </a>
           </div>
         </div>
       </div>
+      <SignupModal show={this.state.showModal} onHide={this.closeModal}/>
     </section>;
   }
 });
-
-ReactDOM.render((
-  <Router>
-    <Route path="/" component={LandingPage} />
-  </Router>
-), document.getElementById('app'));

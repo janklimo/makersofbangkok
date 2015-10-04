@@ -8,18 +8,19 @@
   },
   "dependencies": {
     "babel": "5.8.23",
+    "babel-eslint": "4.1.0",
     "babel-loader": "5.3.2",
     "classnames": "^2.1.3",
-    "react": "^0.14.0-rc",
-    "react-dom": "~0.14.0-rc1",
-    "webpack": "^1.10.5",
-    "react-router": "~1.0.0-rc1",
-    "babel-eslint": "4.1.0",
     "eslint": "^1.0.0",
     "eslint-loader": "^1.0.0",
     "eslint-plugin-react": "^3.2.0",
     "jquery": "~2.1.4",
-    "sizzle": "~2.2.0"
+    "react": "^0.14.0-rc",
+    "react-bootstrap": "^0.25.100-react-pre.1",
+    "react-dom": "~0.14.0-rc1",
+    "react-router": "~1.0.0-rc1",
+    "sizzle": "~2.2.0",
+    "webpack": "^1.10.5"
   },
   "devDependencies": {
     "react-hot-loader": "~1.3.0",

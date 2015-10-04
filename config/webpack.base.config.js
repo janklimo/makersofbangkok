@@ -29,7 +29,7 @@ module.exports = {
       // 'immutable'
     ],
     app: [
-      './makersofbangkok/app.js'
+      './makersofbangkok/app.jsx'
     ]
   },
 
@@ -46,6 +46,7 @@ module.exports = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor_wp_bundle.js'),
     new webpack.ProvidePlugin({
+      React: "react",
       $: "jquery",
       jQuery: "jquery",
       "window.jQuery": "jquery"
