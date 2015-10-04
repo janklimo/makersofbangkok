@@ -15,9 +15,10 @@
     "eslint-loader": "^1.0.0",
     "eslint-plugin-react": "^3.2.0",
     "jquery": "~2.1.4",
-    "react": "^0.14.0-rc",
+    "react": "0.14.0-rc1",
+    "react-addons-linked-state-mixin": "^0.14.0-rc1",
     "react-bootstrap": "^0.25.100-react-pre.1",
-    "react-dom": "~0.14.0-rc1",
+    "react-dom": "0.14.0-rc1",
     "react-router": "~1.0.0-rc1",
     "sizzle": "~2.2.0",
     "webpack": "^1.10.5"
