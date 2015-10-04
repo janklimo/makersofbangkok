@@ -1,9 +1,8 @@
-import React from 'react';
-import LinkedStateMixin from 'react-addons-linked-state-mixin';
+import React from 'react/addons';
 import { Modal, Button, Input } from 'react-bootstrap/lib';
 
 export default React.createClass({
-  mixins: [ LinkedStateMixin ],
+  mixins: [ React.addons.LinkedStateMixin ],
 
   getInitialState() {
     return { referrerEmail: '' };
