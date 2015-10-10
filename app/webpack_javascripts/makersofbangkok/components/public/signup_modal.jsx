@@ -9,7 +9,7 @@ export default React.createClass({
   mixins: [
     React.addons.LinkedStateMixin,
     Reflux.connect(LoaderStore),
-    Reflux.connect(UserStore)
+    Reflux.connect(UserStore, 'referrer')
   ],
 
   getInitialState() {
@@ -21,6 +21,16 @@ export default React.createClass({
   },
 
   render() {
+    let { referrer } = this.state;
+    let result;
+    if (referrer) {
+      if (referrer.user) {
+        let name = referrer.user.first_name;
+        result = `It's a pleasure to meet ${name}'s friend!`;
+      } else {
+        result = 'No Maker with that email :(';
+      }
+    }
     const innerButton = <Button onClick={this.verify}>Verify</Button>;
     return <Modal show={this.props.show} onHide={this.props.onHide}>
       <Modal.Header closeButton>
@@ -36,6 +46,7 @@ export default React.createClass({
           labelClassName="label-class"
           valueLink={this.linkState('referrerEmail')}
           buttonAfter={innerButton} />
+        <p>{result}</p>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={this.props.onHide}>Close</Button>

@@ -1,17 +1,30 @@
 describe Api::V1::UsersController, type: :request do
   describe 'POST /users/verify' do
     context 'requested user exists' do
-      before do
-        @user = create(:user, email: 'jon@example.com')
-        post "/api/v1/users/verify", user_params
+      context 'stanard input' do
+        before do
+          @user = create(:user, email: 'jon@example.com')
+          post "/api/v1/users/verify", user_params
+        end
+        it 'returns user id and name' do
+          expect(response_body['user']['id']).to eq @user.id
+          expect(response_body['user']['first_name']).to eq @user.first_name
+          # only expose what we need
+          expect(response_body['user']).not_to include 'email'
+        end
+        it_behaves_like 'a successful resource request', 'user'
       end
-      it 'returns user id and name' do
-        expect(response_body['user']['id']).to eq @user.id
-        expect(response_body['user']['first_name']).to eq @user.first_name
-        # only expose what we need
-        expect(response_body['user']).not_to include 'email'
+      context 'input contains whitespace' do
+        before do
+          @user = create(:user, email: 'jon@example.com')
+          post "/api/v1/users/verify", { user: { email: ' jon@example.com ' } }
+        end
+        it 'returns user id and name' do
+          expect(response_body['user']['id']).to eq @user.id
+          expect(response_body['user']['first_name']).to eq @user.first_name
+          expect(response_body['user']).not_to include 'email'
+        end
       end
-      it_behaves_like 'a successful resource request', 'user'
     end
 
     context 'requested user is not found' do
