@@ -4,6 +4,7 @@ import { Modal, Button, Input } from 'react-bootstrap/lib';
 import UserActions from '../../actions/user';
 import LoaderStore from '../../stores/loader';
 import UserStore from '../../stores/user';
+import classNames from 'classnames';
 
 export default React.createClass({
   mixins: [
@@ -21,14 +22,15 @@ export default React.createClass({
   },
 
   render() {
-    let { referrer } = this.state;
+    let { referrer, loading } = this.state;
+    let loaderClass = classNames('heartbeat-loader', { hidden: !loading });
     let result;
     if (referrer) {
       if (referrer.user) {
         let name = referrer.user.first_name;
         result = `It's a pleasure to meet ${name}'s friend!`;
       } else {
-        result = 'No Maker with that email :(';
+        result = 'Bummer! We don\'t know anybody with that email :(';
       }
     }
     const innerButton = <Button onClick={this.verify}>Verify</Button>;
@@ -39,14 +41,16 @@ export default React.createClass({
       <Modal.Body>
         <p>Makers of Bangkok is invitation-only.<br /></p>
         <Input type="text"
-          value={this.state.value}
           placeholder="Their email address"
-          label="Who's the cool person who invited you?"
+          label="Who is the cool person who invited you?"
           groupClassName="group-class"
           labelClassName="label-class"
           valueLink={this.linkState('referrerEmail')}
           buttonAfter={innerButton} />
-        <p>{result}</p>
+        <div className="result">
+          <div className={loaderClass}></div>
+          <p className={classNames({hidden: loading})}>{result}</p>
+        </div>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={this.props.onHide}>Close</Button>

@@ -50,8 +50,8 @@
   color: #fff;
   text-align: center;
   border-radius: 5px;
-  background: #E74C3C;
-  border: 2px solid #E74C3C;
+  background: $orange;
+  border: 2px solid $orange;
   text-transform: uppercase;
   font-weight: 700;
   top: -4px;
@@ -69,4 +69,8 @@
     -webkit-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
   }
+}
+
+.result {
+  height: 55px;
 }
