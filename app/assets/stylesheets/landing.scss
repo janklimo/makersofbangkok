@@ -74,3 +74,25 @@
 .result {
   height: 55px;
 }
+
+@media(max-width:440px){
+  .logo-container {
+    #logo{
+      max-width: 70px;
+    }
+  }
+
+  .taglines {
+    h1 {
+      font-size: 40px;
+    }
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .intro {
+    font-size: 17px;
+  }
+}
