@@ -25,6 +25,17 @@ describe Api::V1::UsersController, type: :request do
           expect(response_body['user']).not_to include 'email'
         end
       end
+      context 'input is a funky mix of upper and lower case' do
+        before do
+          @user = create(:user, email: 'jon@example.com')
+          post "/api/v1/users/verify", { user: { email: ' Jon@ExampLe.com ' } }
+        end
+        it 'returns user id and name' do
+          expect(response_body['user']['id']).to eq @user.id
+          expect(response_body['user']['first_name']).to eq @user.first_name
+          expect(response_body['user']).not_to include 'email'
+        end
+      end
     end
 
     context 'requested user is not found' do

@@ -17,7 +17,7 @@ module Api
       end
 
       def verify
-        @user = User.find_by(email: user_params[:email].strip)
+        @user = User.find_by(email: user_params[:email].downcase.strip)
         if @user
           render json: { user: { id: @user.id, first_name: @user.first_name } }
         else
