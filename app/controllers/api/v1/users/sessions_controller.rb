@@ -26,7 +26,7 @@ module Api
       private
 
       def render_auth_error
-        render json: { meta: { errors: error_message  } }, status: 401
+        render json: { meta: { errors: error_message } }, status: 401
       end
 
       def set_resource

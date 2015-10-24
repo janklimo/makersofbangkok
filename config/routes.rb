@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'static#landing'
+  get '*path', to: 'static#landing'
 
   namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
