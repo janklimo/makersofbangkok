@@ -1,6 +1,6 @@
 import React from 'react';
 import Reflux from 'reflux';
-import { Modal, Button } from 'react-bootstrap/lib';
+import { Modal, Button } from 'react-bootstrap';
 import UserActions from '../../actions/user';
 import UserStore from '../../stores/user';
 import VerifyEmail from './verify_email';

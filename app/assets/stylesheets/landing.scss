@@ -61,7 +61,7 @@
   transition: all .3s ease-in-out;
 
   &:active, &:focus, &:hover {
-    background: #D44839;
+    background: $orange-darker;
     color: #FFF;
     border: 2px solid #FFF;
     -webkit-transition: all .3s ease-in-out;
@@ -79,6 +79,19 @@
   h3 {
     margin-bottom: 30px;
   }
+}
+
+.navbar-default {
+  a {
+    float: right;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 15px;
+  }
+}
+
+.navbar-collapse {
+  box-shadow: none;
 }
 
 @media(max-width:440px){

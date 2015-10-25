@@ -1,1 +1,18 @@
-$orange: #E74C3C;
+$orange:         #e74c3c;
+$orange-darker:  #d44839;
+
+// navbar
+$navbar-default-bg:       transparent;
+$navbar-default-border:   transparent;
+
+// navbar links
+$navbar-default-link-color:            #fff;
+$navbar-default-link-hover-color:      #dedede;
+$navbar-default-link-hover-bg:         transparent;
+$navbar-default-link-active-color:     #dedede;
+$navbar-default-link-active-bg:        transparent;
+
+// navbar toggle
+$navbar-default-toggle-hover-bg:       $orange-darker;
+$navbar-default-toggle-icon-bar-bg:    #fff;
+$navbar-default-toggle-border-color:   #fff;
