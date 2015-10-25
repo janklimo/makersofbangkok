@@ -39,12 +39,16 @@
 }
 
 .cta {
-  margin-top: 35px;
+  margin-top: 15px;
+
+  .btn-main {
+    width: 140px;
+    line-height: 28px;
+  }
 }
 
 .btn-main {
-  width: 140px;
-  line-height: 28px;
+  margin: 20px;
   text-align: center;
   font-size: 15px;
   color: #fff;

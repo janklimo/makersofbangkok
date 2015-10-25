@@ -1,6 +1,6 @@
 import React from 'react';
 import Reflux from 'reflux';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import UserActions from '../../actions/user';
 import UserStore from '../../stores/user';
 import VerifyEmail from './verify_email';
@@ -35,9 +35,6 @@ export default React.createClass({
         <VerifyEmail name={name} />
         <SignupForm name={name} />
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={this.props.onHide}>Close</Button>
-      </Modal.Footer>
     </Modal>;
   }
 });

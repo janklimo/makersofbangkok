@@ -20,7 +20,6 @@ export default React.createClass({
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state.firstName);
   },
 
   toggle() {
@@ -58,8 +57,9 @@ export default React.createClass({
           labelClassName="label-class"
           valueLink={this.linkState('password')}
           buttonAfter={innerButton} />
-        <div className="text-right">
-          <ButtonInput type="submit" value="Sign Up" bsStyle="warning" />
+        <div className="text-center">
+          <ButtonInput type="submit" value="Sign Me Up!"
+            className="btn btn-main"/>
         </div>
       </form>
     </div>;
