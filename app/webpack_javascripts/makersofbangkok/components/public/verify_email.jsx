@@ -34,7 +34,7 @@ export default React.createClass({
     return <div className={classNames({hidden: name})}>
       <p>Makers of Bangkok is invitation-only.<br /></p>
       <form onSubmit={this.verify}>
-        <Input type="text"
+        <Input type="text" name="referrer-email"
           placeholder="Their email address"
           label="Who is the cool person who invited you?"
           groupClassName="group-class"

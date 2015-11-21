@@ -6,10 +6,16 @@ require 'capybara/rspec'
 require 'capybara/poltergeist'
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
+module FakePoltergeistLogger
+  def self.puts(*)
+  end
+end
+
 Capybara.register_driver :poltergeist do |app|
   options = {
     js_errors: true,
     phantomjs_options: ['--load-images=no'],
+    phantomjs_logger: FakePoltergeistLogger,
     inspector: true,
     debug: false
   }

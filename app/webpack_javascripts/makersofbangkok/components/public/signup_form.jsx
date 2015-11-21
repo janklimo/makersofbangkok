@@ -35,23 +35,23 @@ export default React.createClass({
     return <div className={classNames('signup-form', {hidden: !name})}>
       <h3 className="text-center">It's a pleasure to meet {name}'s friend!</h3>
       <p>Almost there! Please fill in the form below and you're in.</p>
-      <form onSubmit={this.handleSubmit}>
-        <Input type="text"
+      <form id="signup-form" onSubmit={this.handleSubmit}>
+        <Input type="text" name="first-name"
           label="First name"
           groupClassName="group-class"
           labelClassName="label-class"
           valueLink={this.linkState('firstName')} />
-        <Input type="text"
+        <Input type="text" name="last-name"
           label="Last name"
           groupClassName="group-class"
           labelClassName="label-class"
           valueLink={this.linkState('lastName')} />
-        <Input type="text"
+        <Input type="text" name="email"
           label="Email"
           groupClassName="group-class"
           labelClassName="label-class"
           valueLink={this.linkState('email')} />
-        <Input type={this.state.passwordType}
+        <Input type={this.state.passwordType} name="password"
           label="Password"
           groupClassName="group-class"
           labelClassName="label-class"
