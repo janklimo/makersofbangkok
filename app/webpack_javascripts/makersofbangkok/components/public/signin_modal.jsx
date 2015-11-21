@@ -1,19 +1,20 @@
 import React from 'react/addons';
 import Reflux from 'reflux';
-import { Modal, Input } from 'react-bootstrap';
+import { Modal, Input, Button } from 'react-bootstrap';
 import AuthActions from '../../actions/auth';
 import AuthStore from '../../stores/auth';
+import Loader from '../../shared/loader';
 
 export default React.createClass({
   mixins: [
     React.addons.LinkedStateMixin,
-    Reflux.connect(AuthStore, 'referrer')
+    Reflux.connect(AuthStore)
   ],
 
   getInitialState() {
     return {
       email: '',
-      password: '',
+      password: ''
     };
   },
 
@@ -25,12 +26,13 @@ export default React.createClass({
   },
 
   render() {
+    let { error } = this.state;
     return <Modal show={this.props.show} onHide={this.props.onHide}>
       <Modal.Header closeButton>
         <Modal.Title>Welcome back!</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <Input type="text"
             label="Email"
             groupClassName="group-class"
@@ -41,12 +43,13 @@ export default React.createClass({
             groupClassName="group-class"
             labelClassName="label-class"
             valueLink={this.linkState('password')} />
-          </form>
+          <Loader showResult={!!error} display={error}/>
           <div className="text-center">
-            <a href="#" className="btn btn-main" onClick={this.handleSubmit}>
+            <Button type="submit" className="btn btn-main">
               Let&#39;s go!
-            </a>
+            </Button>
           </div>
+        </form>
       </Modal.Body>
     </Modal>;
   }

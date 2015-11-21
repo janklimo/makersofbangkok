@@ -1,6 +1,7 @@
 import Reflux from 'reflux';
 import request from 'superagent';
 import AuthActions from '../actions/auth';
+import history from '../utils/history';
 
 export default Reflux.createStore({
   listenables: [ AuthActions ],
@@ -20,15 +21,19 @@ export default Reflux.createStore({
     });
   },
 
+  loggedIn() {
+    return !!localStorage.token;
+  },
+
   onLoginCompleted(res) {
-    console.log(res.headers);
     let token = res.headers['access-token'];
     localStorage.token = token;
     this.token = token;
-    this.trigger(this.token);
+    this.trigger({ token: this.token });
+    history.replaceState(null, '/dashboard');
   },
 
   onLoginFailed(err) {
-    console.log(err);
+    this.trigger({ error: err.response.body.meta.errors.message });
   }
 });

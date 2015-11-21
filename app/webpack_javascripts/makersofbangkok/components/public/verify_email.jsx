@@ -1,15 +1,11 @@
 import React from 'react/addons';
-import Reflux from 'reflux';
 import { Button, Input } from 'react-bootstrap/lib';
 import UserActions from '../../actions/user';
-import LoaderStore from '../../stores/loader';
 import classNames from 'classnames';
+import Loader from '../../shared/loader';
 
 export default React.createClass({
-  mixins: [
-    React.addons.LinkedStateMixin,
-    Reflux.connect(LoaderStore)
-  ],
+  mixins: [ React.addons.LinkedStateMixin ],
 
   getInitialState() {
     return {
@@ -25,11 +21,8 @@ export default React.createClass({
   },
 
   render() {
-    let { loading } = this.state;
+    let { showResult } = this.state;
     let { name } = this.props;
-    let loaderClass = classNames('heartbeat-loader', { hidden: !loading });
-    let resultClass =
-      classNames({ hidden: loading || !this.state.showResult });
     let result;
     if (name) {
       result = `It's a pleasure to meet ${name}'s friend!`;
@@ -49,10 +42,7 @@ export default React.createClass({
           valueLink={this.linkState('referrerEmail')}
           buttonAfter={innerButton} />
       </form>
-      <div className="result">
-        <div className={loaderClass}></div>
-        <p className={resultClass}>{result}</p>
-      </div>
+      <Loader showResult={showResult} display={result}/>
     </div>;
   }
 });
