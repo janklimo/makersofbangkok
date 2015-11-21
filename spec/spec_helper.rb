@@ -1,7 +1,22 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'capybara/rails'
+require 'capybara/rspec'
+require 'capybara/poltergeist'
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+
+Capybara.register_driver :poltergeist do |app|
+  options = {
+    js_errors: true,
+    phantomjs_options: ['--load-images=no'],
+    inspector: true,
+    debug: false
+  }
+  Capybara::Poltergeist::Driver.new(app, options)
+end
+Capybara.javascript_driver = :poltergeist
+Capybara.default_max_wait_time = 3
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

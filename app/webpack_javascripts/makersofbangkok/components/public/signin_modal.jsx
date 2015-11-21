@@ -32,13 +32,13 @@ export default React.createClass({
         <Modal.Title>Welcome back!</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <form onSubmit={this.handleSubmit}>
-          <Input type="text"
+        <form id="login-form" onSubmit={this.handleSubmit}>
+          <Input type="text" name="email"
             label="Email"
             groupClassName="group-class"
             labelClassName="label-class"
             valueLink={this.linkState('email')} />
-          <Input type="password"
+          <Input type="password" name="password"
             label="Password"
             groupClassName="group-class"
             labelClassName="label-class"
