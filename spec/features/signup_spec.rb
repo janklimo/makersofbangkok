@@ -17,7 +17,7 @@ feature 'New registration', :js do
     scenario 'missing first name' do
       get_verified
       complete_signup_form(first_name: '')
-      expect(page).to have_content 'Please fill in your first name'
+      expect(page).to have_content 'is required'
     end
   end
 end

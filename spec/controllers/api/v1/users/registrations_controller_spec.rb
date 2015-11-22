@@ -35,6 +35,16 @@ describe Api::V1::Users::RegistrationsController, type: :request do
           expect(response_body['meta']['errors']).to include 'password'
         end
       end
+      context 'missing email' do
+        before do
+          post "/api/v1/users", user_params(email: '')
+        end
+        it 'does not create a user' do
+          user = User.last
+          expect(user).to be_nil
+          expect(response_body['meta']['errors']).to include 'email'
+        end
+      end
       context 'missing referrer' do
         before do
           post "/api/v1/users", user_params(referrer_id: '')
