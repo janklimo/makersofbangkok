@@ -1,6 +1,7 @@
 import React from 'react/addons';
 import { Button, ButtonInput, Input } from 'react-bootstrap/lib';
-// import UserActions from '../../actions/user';
+import UserStore from '../../stores/user';
+import UserActions from '../../actions/user';
 import classNames from 'classnames';
 
 export default React.createClass({
@@ -10,8 +11,8 @@ export default React.createClass({
 
   getInitialState() {
     return {
-      firstName: '',
-      lastName: '',
+      first_name: '',
+      last_name: '',
       email: '',
       password: '',
       passwordType: 'password'
@@ -20,6 +21,9 @@ export default React.createClass({
 
   handleSubmit(e) {
     e.preventDefault();
+    let referrer_id = UserStore.getReferrerId();
+    let user = Object.assign({}, this.state, { referrer_id });
+    UserActions.register(user);
   },
 
   toggle() {
@@ -40,12 +44,12 @@ export default React.createClass({
           label="First name"
           groupClassName="group-class"
           labelClassName="label-class"
-          valueLink={this.linkState('firstName')} />
+          valueLink={this.linkState('first_name')} />
         <Input type="text" name="last-name"
           label="Last name"
           groupClassName="group-class"
           labelClassName="label-class"
-          valueLink={this.linkState('lastName')} />
+          valueLink={this.linkState('last_name')} />
         <Input type="text" name="email"
           label="Email"
           groupClassName="group-class"

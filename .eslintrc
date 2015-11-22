@@ -34,7 +34,6 @@ templateStrings: true
 rules:
   # ERRORS
   brace-style: [2, 1tbs, allowSingleLine: true]
-  camelcase: [2, properties: always]
   comma-style: [2, last]
   curly: [2, all]
   eol-last: 2

@@ -21,7 +21,7 @@ module Api
         if @user
           render json: { user: { id: @user.id, first_name: @user.first_name } }
         else
-          render json: { meta: { error: 'User not found.' } }
+          render json: { meta: { error: 'User not found.' } }, status: 422
         end
       end
 

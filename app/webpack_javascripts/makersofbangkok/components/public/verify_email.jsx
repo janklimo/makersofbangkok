@@ -24,9 +24,7 @@ export default React.createClass({
     let { showResult } = this.state;
     let { name } = this.props;
     let result;
-    if (name) {
-      result = `It's a pleasure to meet ${name}'s friend!`;
-    } else {
+    if (!name) {
       result = 'Bummer! We don\'t know anybody with that email :(';
     }
 
