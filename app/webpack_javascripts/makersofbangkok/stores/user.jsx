@@ -21,13 +21,16 @@ export default Reflux.createStore({
     .end((err, res) => {
       LoaderActions.load.completed();
       if (err) {
-        console.log(res);
         UserActions.register.failed(res);
       } else {
-        console.log(res);
         UserActions.register.completed(res);
       }
     });
+  },
+
+  onRegisterFailed: function(res) {
+    let user = res.body.user;
+    this.trigger(user);
   },
 
   onVerify(email) {

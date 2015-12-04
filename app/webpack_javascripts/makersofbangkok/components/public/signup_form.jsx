@@ -1,16 +1,21 @@
 import React from 'react/addons';
+import Reflux from 'reflux';
 import { Button, ButtonInput, Input } from 'react-bootstrap/lib';
 import UserStore from '../../stores/user';
 import UserActions from '../../actions/user';
 import classNames from 'classnames';
+import { TextInput } from '../../shared/inputs';
+import 'es6-shim';
 
 export default React.createClass({
   mixins: [
-    React.addons.LinkedStateMixin
+    React.addons.LinkedStateMixin,
+    Reflux.connect(UserStore)
   ],
 
   getInitialState() {
     return {
+      errors: [],
       first_name: '',
       last_name: '',
       email: '',
@@ -40,11 +45,13 @@ export default React.createClass({
       <h3 className="text-center">It's a pleasure to meet {name}'s friend!</h3>
       <p>Almost there! Please fill in the form below and you're in.</p>
       <form id="signup-form" onSubmit={this.handleSubmit}>
-        <Input type="text" name="first-name"
-          label="First name"
+        <TextInput type="text" id="first-name" name="first-name"
+          label="First name" attr="first_name"
           groupClassName="group-class"
           labelClassName="label-class"
-          valueLink={this.linkState('first_name')} />
+          valueLink={this.linkState}
+          errors={this.state.errors}
+        />
         <Input type="text" name="last-name"
           label="Last name"
           groupClassName="group-class"

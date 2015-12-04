@@ -43,6 +43,13 @@ module.exports = {
     path: path.join(__dirname, '..', '/app/assets/javascripts')
   },
 
+  devServer: {
+    headers: {
+      'Access-Control-Allow-Origin': 'http://localhost:3000',
+      'Access-Control-Allow-Credentials': 'true'
+    }
+  },
+
   plugins: [
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor_wp_bundle.js'),
     new webpack.ProvidePlugin({

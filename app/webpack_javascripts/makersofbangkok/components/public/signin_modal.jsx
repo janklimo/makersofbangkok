@@ -1,9 +1,10 @@
 import React from 'react/addons';
 import Reflux from 'reflux';
-import { Modal, Input, Button } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 import AuthActions from '../../actions/auth';
 import AuthStore from '../../stores/auth';
 import Loader from '../../shared/loader';
+import { TextInput } from '../../shared/inputs';
 
 export default React.createClass({
   mixins: [
@@ -33,16 +34,16 @@ export default React.createClass({
       </Modal.Header>
       <Modal.Body>
         <form id="login-form" onSubmit={this.handleSubmit}>
-          <Input type="text" name="email"
-            label="Email"
+          <TextInput id="email" type="text" name="email"
+            label="Email" attr="email"
             groupClassName="group-class"
             labelClassName="label-class"
-            valueLink={this.linkState('email')} />
-          <Input type="password" name="password"
-            label="Password"
+            valueLink={this.linkState} />
+          <TextInput id="password" type="password" name="password"
+            label="Password" attr="password"
             groupClassName="group-class"
             labelClassName="label-class"
-            valueLink={this.linkState('password')} />
+            valueLink={this.linkState} />
           <Loader showResult={!!error} display={error}/>
           <div className="text-center">
             <Button type="submit" className="btn btn-main">
