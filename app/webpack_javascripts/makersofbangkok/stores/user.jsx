@@ -7,17 +7,20 @@ export default Reflux.createStore({
   listenables: UserActions,
 
   init() {
-    this.referrer = {};
+    this.user = {
+      referrer: {}
+    };
   },
 
   getReferrerId() {
-    return this.referrer.id;
+    return this.user.referrer.id;
   },
 
   onRegister(user) {
+    let payload = Object.assign(user, { referrer_id: this.getReferrerId() });
     LoaderActions.load();
     request.post('/api/v1/users')
-    .send(user)
+    .send(payload)
     .end((err, res) => {
       LoaderActions.load.completed();
       if (err) {
@@ -29,8 +32,10 @@ export default Reflux.createStore({
   },
 
   onRegisterFailed: function(res) {
-    let user = res.body.user;
-    this.trigger(user);
+    let validatedUser = Object.assign(res.body.user,
+                                      { errors: res.body.meta.errors });
+    this.trigger(validatedUser);
+    console.log(validatedUser);
   },
 
   onVerify(email) {
@@ -42,15 +47,15 @@ export default Reflux.createStore({
       if (err) {
         UserActions.verify.failed(res);
       } else {
-        let referrer = res.body;
+        let referrer = res.body.referrer;
         UserActions.verify.completed(referrer);
       }
     });
   },
 
   onVerifyCompleted(referrer) {
-    this.referrer.id = referrer.user.id;
-    this.trigger(referrer);
+    this.user.referrer = referrer;
+    this.trigger(this.user);
   },
 
   onVerifyFailed(res) {

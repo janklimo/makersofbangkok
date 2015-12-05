@@ -11,7 +11,7 @@ export const TextInput = React.createClass({
     let errorFound = ErrorCheck(this.props.errors, this.props.attr);
     if (this.props.label) {
       var inputLabel =
-        <label className={this.props.labelClassName} htmlFor={this.props.id}>
+        <label className="label-class" htmlFor={this.props.id}>
           {this.props.label}
         </label>;
     }
@@ -22,7 +22,37 @@ export const TextInput = React.createClass({
         type="text" placeholder={this.props.placeholder}
         name={this.props.name} id={this.props.id}
         valueLink={link} />
-      <ErrorHint attr={this.props.attr} errors={this.props.errors} />
+      <ErrorHint for={this.props.id} attr={this.props.attr}
+        errors={this.props.errors} />
+    </div>;
+  }
+});
+
+export const TextInputWithButton = React.createClass({
+  render() {
+    let link = this.props.valueLink(this.props.attr);
+    let errorFound = ErrorCheck(this.props.errors, this.props.attr);
+    if (this.props.label) {
+      var inputLabel =
+        <label className="label-class" htmlFor={this.props.id}>
+          {this.props.label}
+        </label>;
+    }
+    return <div className={classNames('form-group',
+                                      { 'has-error': errorFound })}>
+      {inputLabel}
+      <div className="input-group">
+        <input
+          className={classNames('form-control', this.props.extraClassNames)}
+          type={this.props.type} placeholder={this.props.placeholder}
+          name={this.props.name} id={this.props.id}
+          valueLink={link} />
+        <span className="input-group-btn">
+          {this.props.buttonAfter}
+        </span>
+      </div>
+      <ErrorHint for={this.props.id} attr={this.props.attr}
+        errors={this.props.errors} />
     </div>;
   }
 });
@@ -37,7 +67,7 @@ const ErrorHint = React.createClass({
       errorMessage = this.props.statusMsg;
     }
 
-    return <span className='help-block'>
+    return <span id={`${this.props.for}-errors`} className='help-block'>
       {errorMessage}
     </span>;
   }

@@ -36,13 +36,9 @@ export default React.createClass({
         <form id="login-form" onSubmit={this.handleSubmit}>
           <TextInput id="email" type="text" name="email"
             label="Email" attr="email"
-            groupClassName="group-class"
-            labelClassName="label-class"
             valueLink={this.linkState} />
           <TextInput id="password" type="password" name="password"
             label="Password" attr="password"
-            groupClassName="group-class"
-            labelClassName="label-class"
             valueLink={this.linkState} />
           <Loader showResult={!!error} display={error}/>
           <div className="text-center">

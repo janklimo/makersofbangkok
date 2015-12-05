@@ -1,11 +1,10 @@
 import React from 'react/addons';
 import Reflux from 'reflux';
-import { Button, ButtonInput, Input } from 'react-bootstrap/lib';
+import { Button, ButtonInput } from 'react-bootstrap/lib';
 import UserStore from '../../stores/user';
 import UserActions from '../../actions/user';
 import classNames from 'classnames';
-import { TextInput } from '../../shared/inputs';
-import 'es6-shim';
+import { TextInput, TextInputWithButton } from '../../shared/inputs';
 
 export default React.createClass({
   mixins: [
@@ -26,9 +25,7 @@ export default React.createClass({
 
   handleSubmit(e) {
     e.preventDefault();
-    let referrer_id = UserStore.getReferrerId();
-    let user = Object.assign({}, this.state, { referrer_id });
-    UserActions.register(user);
+    UserActions.register(this.state);
   },
 
   toggle() {
@@ -47,27 +44,26 @@ export default React.createClass({
       <form id="signup-form" onSubmit={this.handleSubmit}>
         <TextInput type="text" id="first-name" name="first-name"
           label="First name" attr="first_name"
-          groupClassName="group-class"
-          labelClassName="label-class"
           valueLink={this.linkState}
           errors={this.state.errors}
         />
-        <Input type="text" name="last-name"
-          label="Last name"
-          groupClassName="group-class"
-          labelClassName="label-class"
-          valueLink={this.linkState('last_name')} />
-        <Input type="text" name="email"
-          label="Email"
-          groupClassName="group-class"
-          labelClassName="label-class"
-          valueLink={this.linkState('email')} />
-        <Input type={this.state.passwordType} name="password"
-          label="Password"
-          groupClassName="group-class"
-          labelClassName="label-class"
-          valueLink={this.linkState('password')}
-          buttonAfter={innerButton} />
+        <TextInput type="text" id="last-name" name="last-name"
+          label="Last name" attr="last_name"
+          valueLink={this.linkState}
+          errors={this.state.errors}
+        />
+        <TextInput type="text" id="email" name="email"
+          label="Email" attr="email"
+          valueLink={this.linkState}
+          errors={this.state.errors}
+        />
+        <TextInputWithButton type={this.state.passwordType}
+          id="password" name="password"
+          label="Password" attr="password"
+          valueLink={this.linkState}
+          buttonAfter={innerButton}
+          errors={this.state.errors}
+        />
         <div className="text-center">
           <ButtonInput type="submit" value="Sign Me Up!"
             className="btn btn-main"/>

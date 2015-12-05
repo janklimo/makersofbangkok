@@ -17,7 +17,32 @@ feature 'New registration', :js do
     scenario 'missing first name' do
       get_verified
       complete_signup_form(first_name: '')
-      expect(page).to have_content 'is required'
+      expect(page).to have_css("#first-name-errors", text: "can't be blank")
+    end
+    scenario 'missing last name' do
+      get_verified
+      complete_signup_form(last_name: '')
+      expect(page).to have_css("#last-name-errors", text: "can't be blank")
+    end
+    scenario 'missing email' do
+      get_verified
+      complete_signup_form(email: '')
+      expect(page).to have_css("#email-errors", text: "can't be blank")
+    end
+    scenario 'email is anything but an email' do
+      get_verified
+      complete_signup_form(email: 'whatisthis@noidea')
+      expect(page).to have_css("#email-errors", text: "is not an email")
+    end
+    scenario 'missing password' do
+      get_verified
+      complete_signup_form(password: '')
+      expect(page).to have_css("#password-errors", text: "can't be blank")
+    end
+    scenario 'password should have at least 5 characters' do
+      get_verified
+      complete_signup_form(password: '1234')
+      expect(page).to have_css("#password-errors", text: "minimum")
     end
   end
 end

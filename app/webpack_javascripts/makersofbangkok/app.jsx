@@ -4,6 +4,7 @@ import LandingPage from './components/public/landing_page';
 import Dashboard from './components/dashboard';
 import AuthStore from './stores/auth';
 import history from './utils/history';
+import 'es6-shim';
 
 function requireAuth(nextState, replaceState) {
   if (!AuthStore.loggedIn()) {

@@ -19,7 +19,12 @@ module Api
       def verify
         @user = User.find_by(email: user_params[:email].downcase.strip)
         if @user
-          render json: { user: { id: @user.id, first_name: @user.first_name } }
+          render json: {
+            referrer: {
+              id: @user.id,
+              first_name: @user.first_name
+            }
+          }
         else
           render json: { meta: { error: 'User not found.' } }, status: 422
         end
