@@ -19,7 +19,7 @@ export const TextInput = React.createClass({
                                       { 'has-error': errorFound })}>
       {inputLabel}
       <input className={classNames('form-control', this.props.extraClassNames)}
-        type="text" placeholder={this.props.placeholder}
+        type={this.props.type} placeholder={this.props.placeholder}
         name={this.props.name} id={this.props.id}
         valueLink={link} />
       <ErrorHint for={this.props.id} attr={this.props.attr}
