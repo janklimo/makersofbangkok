@@ -34,6 +34,11 @@ feature 'New registration', :js do
       complete_signup_form(email: 'whatisthis@noidea')
       expect(page).to have_css("#email-errors", text: "is not an email")
     end
+    scenario 'email is already taken' do
+      get_verified
+      complete_signup_form
+      expect(page).to have_css("#email-errors", text: 'is already in use')
+    end
     scenario 'missing password' do
       get_verified
       complete_signup_form(password: '')
@@ -43,6 +48,11 @@ feature 'New registration', :js do
       get_verified
       complete_signup_form(password: '1234')
       expect(page).to have_css("#password-errors", text: "minimum")
+    end
+    scenario 'user is taken to Dashboard after sign up' do
+      get_verified
+      complete_signup_form(email: 'brand-new@email.com')
+      expect(page).to have_content 'Welcome home!'
     end
   end
 end

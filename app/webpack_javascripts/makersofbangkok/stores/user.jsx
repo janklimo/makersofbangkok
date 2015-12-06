@@ -1,6 +1,7 @@
 import Reflux from 'reflux';
 import request from 'superagent';
 import UserActions from '../actions/user';
+import AuthStore from '../stores/auth';
 import LoaderActions from '../actions/loader';
 
 export default Reflux.createStore({
@@ -31,11 +32,16 @@ export default Reflux.createStore({
     });
   },
 
+  onRegisterCompleted: function(res) {
+    let user = res.body.user;
+    this.trigger(user);
+    AuthStore.logIn(res);
+  },
+
   onRegisterFailed: function(res) {
     let validatedUser = Object.assign(res.body.user,
                                       { errors: res.body.meta.errors });
     this.trigger(validatedUser);
-    console.log(validatedUser);
   },
 
   onVerify(email) {

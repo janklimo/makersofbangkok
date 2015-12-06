@@ -40,7 +40,7 @@ module Api
       def error_message
         error_message =
           "We don't recognize that username and password combination :("
-        { message: error_message  }
+        { message: error_message }
       end
     end
   end

@@ -28,12 +28,16 @@ export default Reflux.createStore({
     return !!localStorage.token;
   },
 
-  onLoginCompleted(res) {
+  logIn(res) {
     let token = res.headers['access-token'];
     localStorage.token = token;
     this.token = token;
     this.trigger({ token: this.token });
     history.replaceState(null, '/dashboard');
+  },
+
+  onLoginCompleted(res) {
+    this.logIn(res);
   },
 
   onLoginFailed(err) {

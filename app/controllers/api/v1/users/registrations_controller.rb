@@ -2,11 +2,14 @@ module Api
   module V1
     class Users::RegistrationsController < DeviseTokenAuth::RegistrationsController
       include ActionController::Serialization
+      include SetUserByToken
+
       before_action :configure_permitted_parameters
 
       def create
         create_user!
         update_auth_header
+        sign_in(:resource, @resource, store: false, bypass: false)
         render json: @resource, status: 201
       rescue ActiveRecord::RecordInvalid, ActiveRecord::RecordNotUnique
         clean_up_passwords @resource
@@ -23,12 +26,6 @@ module Api
         @resource.email = sign_up_params[:email].downcase if @resource.email.present?
         set_token
         @resource.save!
-      end
-
-      def set_token
-        @client_id = SecureRandom.urlsafe_base64(nil, false)
-        @token     = SecureRandom.urlsafe_base64(nil, false)
-        @resource.update_tokens(@client_id, @token)
       end
 
       def configure_permitted_parameters
