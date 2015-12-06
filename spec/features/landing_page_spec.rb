@@ -6,7 +6,7 @@ feature 'Landing Page', :js do
       expect(page).to have_content 'We are Makers of Bangkok'
     end
     scenario 'visits dashboard' do
-      visit '/dashboard'
+      visit '/home/dashboard'
       expect(page).to have_content 'We are Makers of Bangkok'
     end
     scenario 'visits a non-existent URL' do
@@ -25,6 +25,12 @@ feature 'Landing Page', :js do
       visit '/wrongurl'
       expect(page).to have_content 'We are Makers of Bangkok'
       expect(page).to have_content 'SIGN OUT'
+    end
+    scenario 'is taken to landing page after signing out' do
+      visit '/'
+      expect(page).to have_content 'Welcome home!'
+      click_link('Sign Out')
+      expect(page).to have_content 'We are Makers of Bangkok'
     end
   end
 end

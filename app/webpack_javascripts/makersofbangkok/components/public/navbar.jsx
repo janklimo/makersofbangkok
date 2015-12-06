@@ -43,6 +43,5 @@ export default React.createClass({
       </Nav>
       <SigninModal show={this.state.showModal} onHide={this.closeModal}/>
     </Navbar>;
-
   }
 });

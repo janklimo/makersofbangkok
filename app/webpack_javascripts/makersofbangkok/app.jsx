@@ -15,7 +15,8 @@ function requireAuth(nextState, replaceState) {
 
 function takeMeHome(nextState, replaceState) {
   if (AuthStore.loggedIn()) {
-    replaceState({ nextPathname: nextState.location.pathname }, '/dashboard');
+    replaceState({ nextPathname: nextState.location.pathname },
+                 '/home/dashboard');
   }
 }
 
@@ -24,7 +25,7 @@ React.render((
     <Route path="/" component={LandingPage} onEnter={takeMeHome}/>
     <Route path="home" component={Home} onEnter={requireAuth}>
       <IndexRoute component={Dashboard}/>
-      <Route path="/dashboard" component={Dashboard} />
+      <Route path="dashboard" component={Dashboard} />
     </Route>
     <Route path="*" component={LandingPage} />
   </Router>

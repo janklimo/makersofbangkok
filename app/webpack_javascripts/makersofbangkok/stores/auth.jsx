@@ -8,7 +8,7 @@ export default Reflux.createStore({
   listenables: [ AuthActions ],
 
   init() {
-    this.token = localStorage.token || {};
+    this.user = {};
   },
 
   onLogin(user) {
@@ -31,9 +31,9 @@ export default Reflux.createStore({
   logIn(res) {
     let token = res.headers['access-token'];
     localStorage.token = token;
-    this.token = token;
-    this.trigger({ token: this.token });
-    history.replaceState(null, '/dashboard');
+    this.user = res.body.user;
+    this.trigger(this.user);
+    history.replaceState(null, '/home/dashboard');
   },
 
   onLoginCompleted(res) {
@@ -46,7 +46,8 @@ export default Reflux.createStore({
 
   onLogout() {
     delete localStorage.token;
-    this.token = {};
-    this.trigger({ token: this.token });
+    this.user = {};
+    this.trigger(this.user);
+    history.replaceState(null, '/');
   }
 });
