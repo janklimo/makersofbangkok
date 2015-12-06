@@ -42,5 +42,11 @@ export default Reflux.createStore({
 
   onLoginFailed(err) {
     this.trigger({ error: err.response.body.meta.errors.message });
+  },
+
+  onLogout() {
+    delete localStorage.token;
+    this.token = {};
+    this.trigger({ token: this.token });
   }
 });
