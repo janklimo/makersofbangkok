@@ -1,0 +1,31 @@
+.navbar-default {
+  a {
+    float: right;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 15px;
+  }
+}
+
+.navbar-collapse {
+  box-shadow: none;
+}
+
+#navbar-home {
+  &.navbar-default {
+    background: #0099B7;
+    border-top: 3px solid #DF552A;
+  }
+
+  .logo-wrapper {
+    width: 100%;
+    position: absolute;
+    left: 0;
+  }
+
+  #logo {
+    width: 65px;
+    position: relative;
+    top: -33px;
+  }
+}
