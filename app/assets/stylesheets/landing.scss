@@ -25,8 +25,8 @@
   }
 
   h1{
+    font-family: "Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 60px;
-    font-weight: bold;
     text-shadow: 1px 2px #2D2D2D;
     margin-bottom: 30px;
   }
@@ -48,6 +48,7 @@
 }
 
 .btn-main {
+  font-family: "Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 20px;
   text-align: center;
   font-size: 15px;
@@ -57,7 +58,6 @@
   background: $orange;
   border: 2px solid $orange;
   text-transform: uppercase;
-  font-weight: 700;
   top: -4px;
   -webkit-transition: all .3s ease-in-out;
   -moz-transition: all .3s ease-in-out;

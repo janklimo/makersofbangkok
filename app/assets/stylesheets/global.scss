@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Regular';
+  src: font-url('Montserrat-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bold';
+  src: font-url('Montserrat-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: $light-grey;
+}

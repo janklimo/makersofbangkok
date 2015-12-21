@@ -2,7 +2,6 @@
   a {
     float: right;
     text-transform: uppercase;
-    font-weight: bold;
     font-size: 15px;
   }
 }
@@ -13,8 +12,8 @@
 
 #navbar-home {
   &.navbar-default {
-    background: #0099B7;
-    border-top: 3px solid #DF552A;
+    background: $home-navy;
+    border-top: 3px solid $home-orange;
   }
 
   .logo-wrapper {
