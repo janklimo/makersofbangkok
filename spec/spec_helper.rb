@@ -13,7 +13,7 @@ end
 
 Capybara.register_driver :poltergeist do |app|
   options = {
-    js_errors: true,
+    js_errors: false,
     phantomjs_options: ['--load-images=no'],
     phantomjs_logger: FakePoltergeistLogger,
     inspector: true,

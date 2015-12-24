@@ -7,7 +7,7 @@ describe Api::V1::Users::SessionsController, type: :request do
           email: @user.email, password: 'test1234'
         }
         expect(response.header['access-token']).not_to be_nil
-        expect(response_body['user']['first_name']).to eq 'John'
+        expect(response_body['user']['first_name']).to eq 'Jon'
       end
     end
     context 'credentials are wrong' do

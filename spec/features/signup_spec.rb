@@ -52,7 +52,7 @@ feature 'New registration', :js do
     scenario 'user is taken to Dashboard after sign up' do
       get_verified
       complete_signup_form(email: 'brand-new@email.com')
-      expect(page).to have_content 'Welcome home!'
+      expect(page).to have_content "Welcome, #{@user.first_name}!"
     end
   end
 end
@@ -69,7 +69,7 @@ end
 
 def complete_signup_form(overrides={})
   within '#signup-form' do
-    fill_in 'first-name', with: overrides[:first_name] || 'John'
+    fill_in 'first-name', with: overrides[:first_name] || 'Jon'
     fill_in 'last-name', with: overrides[:last_name] || 'Snow'
     fill_in 'email', with: overrides[:email] || @user.email
     fill_in 'password', with: overrides[:password] || 'test1234'

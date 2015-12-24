@@ -19,7 +19,7 @@ feature 'Landing Page', :js do
     include_context "@user is logged in"
     scenario 'visits landing page' do
       visit '/'
-      expect(page).to have_content 'Welcome home!'
+      expect(page).to have_content "Welcome, #{@user.first_name}!"
     end
     scenario 'visits a non-existent URL' do
       visit '/wrongurl'
@@ -28,7 +28,7 @@ feature 'Landing Page', :js do
     end
     scenario 'is taken to landing page after signing out' do
       visit '/'
-      expect(page).to have_content 'Welcome home!'
+      expect(page).to have_content "Welcome, #{@user.first_name}!"
       click_link('Sign Out')
       expect(page).to have_content 'We are Makers of Bangkok'
     end

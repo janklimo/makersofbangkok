@@ -14,7 +14,7 @@ feature 'New sign in', :js do
     click_link('Sign In')
     expect(page).to have_content 'Welcome back!'
     complete_signin_form
-    expect(page).to have_content 'Welcome home!'
+    expect(page).to have_content "Welcome, #{@user.first_name}!"
   end
 end
 

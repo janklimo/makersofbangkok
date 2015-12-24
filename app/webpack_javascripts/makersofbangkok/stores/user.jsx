@@ -66,5 +66,25 @@ export default Reflux.createStore({
 
   onVerifyFailed(res) {
     console.log(res);
+  },
+
+  onGetUser() {
+    const userId = localStorage.userId;
+    LoaderActions.load();
+    request.get(`/api/v1/users/${userId}`)
+    .set(AuthStore.credentials)
+    .end((err, res) => {
+      LoaderActions.load.completed();
+      if (err) {
+        console.error(err);
+      } else {
+        UserActions.getUser.completed(res.body.user);
+      }
+    });
+  },
+
+  onGetUserCompleted(user) {
+    this.user = user;
+    this.trigger(this.user);
   }
 });

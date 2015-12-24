@@ -9,6 +9,18 @@ export default Reflux.createStore({
 
   init() {
     this.user = {};
+    let storedCredentials = {
+      'access-token': localStorage.token,
+      client: localStorage.client,
+      expiry: localStorage.expiry,
+      'token-type': localStorage.tokenType,
+      uid: localStorage.uid
+    };
+    this.credentials = this.loggedIn() ? storedCredentials : {};
+  },
+
+  getInitialState: function() {
+    return this.user;
   },
 
   onLogin(user) {
@@ -29,9 +41,25 @@ export default Reflux.createStore({
   },
 
   logIn(res) {
+    // auth headers
     let token = res.headers['access-token'];
-    localStorage.token = token;
+    let client = res.headers['client'];
+    let expiry = res.headers['expiry'];
+    let tokenType = res.headers['token-type'];
+    let uid = res.headers['uid'];
+
+    // user
     this.user = res.body.user;
+    let userId = this.user.id;
+
+    // save data
+    localStorage.token = token;
+    localStorage.client = client;
+    localStorage.expiry = expiry;
+    localStorage.tokenType = tokenType;
+    localStorage.uid = uid;
+    localStorage.userId = userId;
+
     this.trigger(this.user);
     history.replaceState(null, '/home/dashboard');
   },
@@ -46,7 +74,15 @@ export default Reflux.createStore({
 
   onLogout() {
     delete localStorage.token;
+    delete localStorage.client;
+    delete localStorage.expiry;
+    delete localStorage.tokenType;
+    delete localStorage.uid;
+    delete localStorage.userId;
+
     this.user = {};
+    this.credentials = {};
+
     this.trigger(this.user);
     history.replaceState(null, '/');
   }
