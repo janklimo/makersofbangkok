@@ -51,4 +51,20 @@ describe User do
       end
     end
   end
+  context 'friends' do
+    before do
+      @user = create(:user)
+      @other_user_1 = create(:user, first_name: 'James', referrer_id: @user.id)
+      @other_user_2 = create(:user, referrer_id: 10)
+    end
+    it 'returns the people referred' do
+      expect(@user.friends.size).to eq 1
+      expect(@user.friends.first.first_name).to eq 'James'
+    end
+    context '#friends_count' do
+      it 'returns the right number of people referrred' do
+        expect(@user.friends_count).to eq 1
+      end
+    end
+  end
 end

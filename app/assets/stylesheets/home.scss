@@ -1,8 +1,31 @@
 #home-container {
   padding-top: 120px;
 
-  #greeting {
+  #dashboard {
     text-align: center;
+
+    a {
+      color: $home-orange;
+      text-decoration: none;
+    }
+
+    .medal {
+      width: 90px;
+      height: 128px;
+      background: url(https://s3-ap-southeast-1.amazonaws.com/makersofbangkok/medal.png) bottom center no-repeat;
+      display: block;
+      margin: 15px auto;
+
+      .label {
+        position: relative;
+        top: 34px;
+        font-size: 22px;
+        color: #743900;
+      }
+    }
+  }
+
+  #greeting {
     font-size: 34px;
   }
 }

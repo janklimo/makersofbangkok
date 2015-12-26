@@ -8,6 +8,9 @@ describe Api::V1::UsersController, type: :request do
       it 'includes user attributes' do
         expect(response_body['user']['first_name']).to eq @user.first_name
       end
+      it 'includes friends_count' do
+        expect(response_body['user']['friends_count']).to eq 0
+      end
       it_behaves_like 'a successful resource request', 'user'
     end
     context 'requesting user is someone else' do

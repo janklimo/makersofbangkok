@@ -17,9 +17,29 @@ feature 'Landing Page', :js do
   end
   context 'signed in user' do
     include_context "@user is logged in"
-    scenario 'visits landing page' do
-      visit '/'
-      expect(page).to have_content "Welcome, #{@user.first_name}!"
+    context 'visits dashboard' do
+      it "shows user's ID" do
+        visit '/'
+        expect(page).to have_content "Welcome, #{@user.first_name}!"
+        expect(page).to have_content "##{@user.id}"
+      end
+      context 'forever alone' do
+        it 'shows the right message' do
+          visit '/'
+          expect(page).to have_content "haven't referred anybody yet"
+          expect(page).to have_link 'Invite your first friend now!'
+        end
+      end
+      context 'has friends' do
+        before do
+          create(:user, referrer_id: @user.id)
+        end
+        it 'thanks the fella' do
+          visit '/'
+          expect(page).to have_content "You've introduced"
+          expect(page).to have_link 'Invite more of your friends!'
+        end
+      end
     end
     scenario 'visits a non-existent URL' do
       visit '/wrongurl'

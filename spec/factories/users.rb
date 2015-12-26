@@ -6,7 +6,7 @@ FactoryGirl.define do
     provider "email"
     first_name 'Jon'
     last_name 'Snow'
-    referrer_id 1
+    referrer_id 42
   end
 end
 

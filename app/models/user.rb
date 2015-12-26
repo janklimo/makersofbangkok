@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
 
+  has_many :friends, class_name: "User", foreign_key: "referrer_id"
+
   validates_presence_of :first_name, :last_name, :referrer_id
 
   def update_tokens(client_id, token)
@@ -14,5 +16,9 @@ class User < ActiveRecord::Base
       }
       save
     end
+  end
+
+  def friends_count
+    self.friends.count
   end
 end
