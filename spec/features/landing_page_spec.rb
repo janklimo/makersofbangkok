@@ -31,13 +31,23 @@ feature 'Landing Page', :js do
         end
       end
       context 'has friends' do
-        before do
-          create(:user, referrer_id: @user.id)
+        before { create(:user, referrer_id: @user.id) }
+        context 'one friend' do
+          it 'thanks the fella' do
+            visit '/'
+            expect(page).to have_content "You've introduced"
+            expect(page).to have_content 'great person'
+            expect(page).to have_link 'Invite more of your friends!'
+          end
         end
-        it 'thanks the fella' do
-          visit '/'
-          expect(page).to have_content "You've introduced"
-          expect(page).to have_link 'Invite more of your friends!'
+        context 'many friends' do
+          before { create(:user, referrer_id: @user.id) }
+          it 'thanks the fella' do
+            visit '/'
+            expect(page).to have_content "You've introduced"
+            expect(page).to have_content 'great people'
+            expect(page).to have_link 'Invite more of your friends!'
+          end
         end
       end
     end

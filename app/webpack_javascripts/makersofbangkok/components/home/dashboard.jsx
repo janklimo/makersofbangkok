@@ -36,7 +36,7 @@ ${firstName}`;
     let hasFriends = <p>
       You've introduced Makers of Bangkok to
       <span className="teal"> {count} </span>
-      other great people. You rock!<br />
+      other great {count > 1 ? 'people' : 'person'}. You rock!<br />
       <a href={`mailto:?subject=${subject}&body=${body}`} target="_blank">
         Invite more of your friends!
       </a>
