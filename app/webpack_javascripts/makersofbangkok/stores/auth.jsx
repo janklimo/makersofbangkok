@@ -9,6 +9,10 @@ export default Reflux.createStore({
 
   init() {
     this.user = {};
+    this.setCredentials();
+  },
+
+  setCredentials() {
     let storedCredentials = {
       'access-token': localStorage.token,
       client: localStorage.client,
@@ -16,6 +20,7 @@ export default Reflux.createStore({
       'token-type': localStorage.tokenType,
       uid: localStorage.uid
     };
+
     this.credentials = this.loggedIn() ? storedCredentials : {};
   },
 
@@ -61,6 +66,7 @@ export default Reflux.createStore({
     localStorage.userId = userId;
 
     this.trigger(this.user);
+    this.setCredentials();
     history.replaceState(null, '/home/dashboard');
   },
 
@@ -73,17 +79,25 @@ export default Reflux.createStore({
   },
 
   onLogout() {
-    delete localStorage.token;
-    delete localStorage.client;
-    delete localStorage.expiry;
-    delete localStorage.tokenType;
-    delete localStorage.uid;
-    delete localStorage.userId;
+    request.delete('/api/v1/users/sign_out')
+    .set(this.credentials)
+    .end((err) => {
+      if (err) {
+        console.error('Logout error', err);
+      } else {
+        delete localStorage.token;
+        delete localStorage.client;
+        delete localStorage.expiry;
+        delete localStorage.tokenType;
+        delete localStorage.uid;
+        delete localStorage.userId;
 
-    this.user = {};
-    this.credentials = {};
+        this.user = {};
+        this.credentials = {};
 
-    this.trigger(this.user);
-    history.replaceState(null, '/');
+        this.trigger(this.user);
+        history.replaceState(null, '/');
+      }
+    });
   }
 });

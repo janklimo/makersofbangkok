@@ -61,6 +61,7 @@ feature 'Landing Page', :js do
       expect(page).to have_content "Welcome, #{@user.first_name}!"
       click_link('Sign Out')
       expect(page).to have_content 'We are Makers of Bangkok'
+      expect(@user.reload.tokens).to be_empty
     end
   end
 end
