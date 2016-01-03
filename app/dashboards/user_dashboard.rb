@@ -27,8 +27,7 @@ class UserDashboard < Administrate::BaseDashboard
     updated_at: Field::DateTime,
     referrer_id: Field::Number,
     first_name: Field::String,
-    last_name: Field::String,
-    admin: Field::Boolean,
+    last_name: Field::String
   }
 
   # COLLECTION_ATTRIBUTES
@@ -67,8 +66,7 @@ class UserDashboard < Administrate::BaseDashboard
     :tokens,
     :referrer_id,
     :first_name,
-    :last_name,
-    :admin,
+    :last_name
   ]
 
   # Overwrite this method to customize how users are displayed
