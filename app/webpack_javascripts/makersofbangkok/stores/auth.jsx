@@ -79,23 +79,22 @@ export default Reflux.createStore({
   },
 
   onLogout() {
+    delete localStorage.token;
+    delete localStorage.client;
+    delete localStorage.expiry;
+    delete localStorage.tokenType;
+    delete localStorage.uid;
+    delete localStorage.userId;
+
     request.delete('/api/v1/users/sign_out')
     .set(this.credentials)
     .end((err) => {
       if (err) {
         console.error('Logout error', err);
       } else {
-        delete localStorage.token;
-        delete localStorage.client;
-        delete localStorage.expiry;
-        delete localStorage.tokenType;
-        delete localStorage.uid;
-        delete localStorage.userId;
-
         this.user = {};
-        this.credentials = {};
-
         this.trigger(this.user);
+        this.credentials = {};
         history.replaceState(null, '/');
       }
     });
