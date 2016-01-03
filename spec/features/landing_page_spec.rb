@@ -54,7 +54,8 @@ feature 'Landing Page', :js do
     scenario 'visits a non-existent URL' do
       visit '/wrongurl'
       expect(page).to have_content 'We are Makers of Bangkok'
-      expect(page).to have_content 'SIGN OUT'
+      expect(page).to have_link 'Sign Out'
+      expect(page).to have_link 'Dashboard'
     end
     scenario 'is taken to landing page after signing out' do
       visit '/'

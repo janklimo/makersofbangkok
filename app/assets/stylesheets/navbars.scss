@@ -1,8 +1,12 @@
 .navbar-default {
-  a {
+  .navbar-nav > li > a {
     float: right;
     text-transform: uppercase;
     font-size: 15px;
+
+    &.highlight {
+      color: $home-orange;
+    }
   }
 }
 
