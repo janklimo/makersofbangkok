@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   root 'static#landing'
 
+  namespace :admin do
+    DashboardManifest::DASHBOARDS.each do |dashboard_resource|
+      resources dashboard_resource
+    end
+
+    root controller: DashboardManifest::ROOT_DASHBOARD, action: :index
+  end
+
   namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
       mount_devise_token_auth_for 'User', at: 'users', controllers: {
