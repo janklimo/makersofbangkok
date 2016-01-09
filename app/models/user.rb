@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   has_many :friends, class_name: "User", foreign_key: "referrer_id"
+  has_many :registrations
+  has_many :events, through: :registrations
 
   validates_presence_of :first_name, :last_name, :referrer_id
 
