@@ -5,7 +5,7 @@ describe Event do
       create(:event, name: 'next month', date: 1.month.from_now)
       create(:event, name: 'next week', date: 1.week.from_now)
     end
-    it 'works' do
+    it 'returns the upcoming event' do
       expect(Event.upcoming.name).to eq 'next week'
     end
   end
