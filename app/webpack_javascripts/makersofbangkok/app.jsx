@@ -1,4 +1,4 @@
-import React from 'react';
+import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute } from 'react-router';
 import LandingPage from './components/public/landing_page';
 import Dashboard from './components/home/dashboard';
@@ -20,7 +20,7 @@ function takeMeHome(nextState, replaceState) {
   }
 }
 
-React.render((
+ReactDOM.render((
   <Router history={history}>
     <Route path="/" component={LandingPage} onEnter={takeMeHome}/>
     <Route path="home" component={Home} onEnter={requireAuth}>

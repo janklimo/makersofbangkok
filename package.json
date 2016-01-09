@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/janklimo/makersofbangkok.git"
   },
-  "license": "TODO: specify",
+  "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.hot.config.js --progress --colors --inline",
     "postinstall": "webpack -p --config config/webpack.prod.config.js"
@@ -20,13 +20,14 @@
     "eslint": "^1.0.0",
     "eslint-loader": "^1.0.0",
     "eslint-plugin-react": "^3.2.0",
-    "history": "~1.12.5",
+    "history": "^1.17.0",
     "jquery": "~2.1.4",
     "lodash": "^3.10.1",
-    "react": "0.13.3",
-    "react-bootstrap": "0.26.4",
-    "react-router": "~1.0.0-rc1",
-    "reflux": "^0.2.12",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6",
+    "react-bootstrap": "0.28.2",
+    "react-router": "1.0.3",
+    "reflux": "0.3.0",
     "sizzle": "~2.2.0",
     "superagent": "^1.4.0",
     "webpack": "^1.10.5"
