@@ -14,8 +14,8 @@ class EventDashboard < Administrate::BaseDashboard
 
   COLLECTION_ATTRIBUTES = [
     :name,
-    :date,
-    :venue
+    :venue,
+    :date
   ]
 
   SHOW_PAGE_ATTRIBUTES = ATTRIBUTE_TYPES.keys

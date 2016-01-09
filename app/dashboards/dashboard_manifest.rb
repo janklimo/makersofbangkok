@@ -12,6 +12,7 @@ class DashboardManifest
   DASHBOARDS = [
     :users,
     :events,
+    :registrations,
     :venues
   ]
 
