@@ -13,12 +13,17 @@ export default React.createClass({
   },
 
   render() {
-    return <Navbar id="navbar-home" fixedTop toggleNavKey={0}>
-      <Nav right eventKey={0}>
-        <NavItem eventKey={1} onClick={this.handleSignOut} href="#">
-          Sign Out
-        </NavItem>
-      </Nav>
+    return <Navbar id="navbar-home" fixedTop>
+      <Navbar.Header>
+        <Navbar.Toggle />
+      </Navbar.Header>
+      <Navbar.Collapse>
+        <Nav pullRight>
+          <NavItem eventKey={1} onClick={this.handleSignOut} href="#">
+            Sign Out
+          </NavItem>
+        </Nav>
+      </Navbar.Collapse>
       <div className="logo-wrapper">
         <img id="logo" className="center-block" src={`${s3}/logo.png`} />
       </div>

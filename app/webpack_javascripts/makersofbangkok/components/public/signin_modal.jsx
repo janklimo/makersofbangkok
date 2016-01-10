@@ -1,4 +1,5 @@
-import React from 'react/addons';
+import React from 'react';
+import LinkedStateMixin from 'react-addons-linked-state-mixin';
 import Reflux from 'reflux';
 import { Modal, Button } from 'react-bootstrap';
 import AuthActions from '../../actions/auth';
@@ -8,7 +9,7 @@ import { TextInput } from '../../shared/inputs';
 
 export default React.createClass({
   mixins: [
-    React.addons.LinkedStateMixin,
+    LinkedStateMixin,
     Reflux.connect(AuthStore)
   ],
 

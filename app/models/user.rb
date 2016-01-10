@@ -19,8 +19,4 @@ class User < ActiveRecord::Base
       save
     end
   end
-
-  def friends_count
-    self.friends.count
-  end
 end

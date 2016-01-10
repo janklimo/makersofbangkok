@@ -1,11 +1,12 @@
-import React from 'react/addons';
+import React from 'react';
+import LinkedStateMixin from 'react-addons-linked-state-mixin';
 import { Button, Input } from 'react-bootstrap/lib';
 import UserActions from '../../actions/user';
 import classNames from 'classnames';
 import Loader from '../../shared/loader';
 
 export default React.createClass({
-  mixins: [ React.addons.LinkedStateMixin ],
+  mixins: [ LinkedStateMixin ],
 
   getInitialState() {
     return {

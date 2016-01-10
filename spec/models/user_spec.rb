@@ -61,10 +61,5 @@ describe User do
       expect(@user.friends.size).to eq 1
       expect(@user.friends.first.first_name).to eq 'James'
     end
-    context '#friends_count' do
-      it 'returns the right number of people referrred' do
-        expect(@user.friends_count).to eq 1
-      end
-    end
   end
 end

@@ -43,11 +43,16 @@ export default React.createClass({
       authNavItem = <NavItem eventKey={1} onClick={this.openModal}
                       href="#">Sign In</NavItem>;
     }
-    return <Navbar id="navbar-public" fixedTop toggleNavKey={0}>
-      <Nav right eventKey={0}>
-        {dashboardNavItem}
-        {authNavItem}
-      </Nav>
+    return <Navbar id="navbar-public" fixedTop>
+      <Navbar.Header>
+        <Navbar.Toggle />
+      </Navbar.Header>
+      <Navbar.Collapse>
+        <Nav pullRight>
+          {dashboardNavItem}
+          {authNavItem}
+        </Nav>
+      </Navbar.Collapse>
       <SigninModal show={this.state.showModal} onHide={this.closeModal}/>
     </Navbar>;
   }

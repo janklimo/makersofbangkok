@@ -1,4 +1,5 @@
-import React from 'react/addons';
+import React from 'react';
+import LinkedStateMixin from 'react-addons-linked-state-mixin';
 import Reflux from 'reflux';
 import { Button, ButtonInput } from 'react-bootstrap/lib';
 import UserStore from '../../stores/user';
@@ -8,7 +9,7 @@ import { TextInput, TextInputWithButton } from '../../shared/inputs';
 
 export default React.createClass({
   mixins: [
-    React.addons.LinkedStateMixin,
+    LinkedStateMixin,
     Reflux.connect(UserStore)
   ],
 
