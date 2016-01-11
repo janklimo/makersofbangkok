@@ -32,13 +32,13 @@ export default Reflux.createStore({
     });
   },
 
-  onRegisterCompleted: function(res) {
+  onRegisterCompleted(res) {
     let user = res.body.user;
     this.trigger(user);
     AuthStore.logIn(res);
   },
 
-  onRegisterFailed: function(res) {
+  onRegisterFailed(res) {
     let validatedUser = Object.assign(res.body.user,
                                       { errors: res.body.meta.errors });
     this.trigger(validatedUser);

@@ -3,7 +3,8 @@ import Reflux from 'reflux';
 import AuthStore from '../../stores/auth';
 import UserStore from '../../stores/user';
 import UserActions from '../../actions/user';
-import welcomeEmail from './welcome_email.jsx';
+import welcomeEmail from './welcome_email';
+import EventContainer from './events/container';
 
 const FriendsMessage = (props) => {
   let { friends, email, firstName } = props;
@@ -58,6 +59,7 @@ export default React.createClass({
       </div>
       <FriendsMessage friends={friends} email={email}
         firstName={first_name} />
+      <EventContainer />
     </div>;
   }
 });
