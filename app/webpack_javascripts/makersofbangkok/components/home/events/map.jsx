@@ -9,14 +9,6 @@ const Marker = () => {
 };
 
 export default class VenueMap extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
-
-  shouldComponentUpdate(nextProps) {
-    return nextProps.venue && nextProps.venue !== this.props.venue;
-  }
-
   render() {
     let { venue } = this.props;
     if (!venue) {
@@ -27,7 +19,6 @@ export default class VenueMap extends PureComponent {
       lat: latitude,
       lng: longitude
     };
-    console.log('rendering');
     return <div id="venue-map">
       <GoogleMap
         bootstrapURLKeys={{
@@ -35,7 +26,7 @@ export default class VenueMap extends PureComponent {
           language: 'en'
         }}
         defaultCenter={center}
-        defaultZoom={16}>
+        defaultZoom={15}>
         <Marker lat={latitude} lng={longitude} />
       </GoogleMap>
     </div>;

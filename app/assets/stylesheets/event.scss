@@ -1,3 +1,22 @@
+#event {
+  margin-top: 35px;
+
+  h1 {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    text-align: left;
+    color: $home-teal;
+    font-size: 18px;
+  }
+
+  #venue-image {
+    width: 100%;
+  }
+}
+
 #venue-map {
   height: 300px;
 
@@ -16,21 +35,6 @@
     left: 50%;
     top: 50%;
     margin: -20px 0 0 -20px;
-    -webkit-animation-name: bounce;
-    -moz-animation-name: bounce;
-    -o-animation-name: bounce;
-    -ms-animation-name: bounce;
-    animation-name: bounce;
-    -webkit-animation-fill-mode: both;
-    -moz-animation-fill-mode: both;
-    -o-animation-fill-mode: both;
-    -ms-animation-fill-mode: both;
-    animation-fill-mode: both;
-    -webkit-animation-duration: 1s;
-    -moz-animation-duration: 1s;
-    -o-animation-duration: 1s;
-    -ms-animation-duration: 1s;
-    animation-duration: 1s;
   }
   .pin:after {
     content: '';

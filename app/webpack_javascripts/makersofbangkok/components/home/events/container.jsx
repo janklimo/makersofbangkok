@@ -4,6 +4,11 @@ import EventStore from '../../../stores/event';
 import EventActions from '../../../actions/event';
 import VenueMap from './map';
 
+const VenueImage = ({venue}) => {
+  return <img src={venue.image_url} id="venue-image"
+              alt={`${venue.name} cover image`} />;
+};
+
 export default React.createClass({
   mixins: [ Reflux.connect(EventStore) ],
 
@@ -14,10 +19,21 @@ export default React.createClass({
   render() {
     let { name, venue } = this.state;
 
+    if (!venue) {
+      return null;
+    }
+
     return <div id="event">
-      Upcoming event: {name}
-      <br />
-    <VenueMap venue={venue} />
+      <h1>Upcoming event</h1>
+        <div className="row">
+          <div className="col-sm-6 no-gutter">
+            <VenueImage venue={venue} />
+            <VenueMap venue={venue} />
+          </div>
+          <div className="col-sm-6">
+            <h2>{name}</h2>
+          </div>
+        </div>
     </div>;
   }
 });
