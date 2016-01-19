@@ -7,6 +7,7 @@ class EventDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     date: Field::DateTime,
+    capacity: Field::Number,
     description: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -24,6 +25,7 @@ class EventDashboard < Administrate::BaseDashboard
     :venue,
     :name,
     :date,
+    :capacity,
     :description
   ]
 

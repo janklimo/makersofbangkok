@@ -8,6 +8,7 @@ class VenueDashboard < Administrate::BaseDashboard
     address: Field::String,
     latitude: Field::Number.with_options(decimals: 6),
     longitude: Field::Number.with_options(decimals: 6),
+    url: Field::String,
     image_url: Field::String,
     description: Field::Text,
     created_at: Field::DateTime,
@@ -26,6 +27,7 @@ class VenueDashboard < Administrate::BaseDashboard
     :address,
     :latitude,
     :longitude,
+    :url,
     :image_url,
     :description
   ]

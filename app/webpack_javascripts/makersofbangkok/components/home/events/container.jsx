@@ -3,6 +3,7 @@ import Reflux from 'reflux';
 import EventStore from '../../../stores/event';
 import EventActions from '../../../actions/event';
 import VenueMap from './map';
+import moment from 'moment';
 
 const VenueImage = ({venue}) => {
   return <img src={venue.image_url} id="venue-image"
@@ -17,7 +18,7 @@ export default React.createClass({
   },
 
   render() {
-    let { name, venue } = this.state;
+    let { name, venue, date, description, capacity, attendees } = this.state;
 
     if (!venue) {
       return null;
@@ -32,6 +33,16 @@ export default React.createClass({
           </div>
           <div className="col-sm-6">
             <h2>{name}</h2>
+            <h3>{moment(date).format('MMMM Do YYYY, h:mm:ss a')}</h3>
+            <h3>
+              <a href={venue.url} target="_blank">{venue.name}</a>
+              , {venue.address}
+            </h3>
+            <p className="description">
+              {description}
+              <br />
+              Spots available: {capacity - attendees.length}
+            </p>
           </div>
         </div>
     </div>;

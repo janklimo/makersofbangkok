@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Makersofbangkok
   class Application < Rails::Application
+    config.time_zone = 'Bangkok';
     config.middleware.insert_before 0, "Rack::Cors" do
       allow do
         origins(

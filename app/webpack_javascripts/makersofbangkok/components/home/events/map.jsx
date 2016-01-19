@@ -11,9 +11,6 @@ const Marker = () => {
 export default class VenueMap extends PureComponent {
   render() {
     let { venue } = this.props;
-    if (!venue) {
-      return null;
-    }
     let { latitude, longitude } = venue;
     let center = {
       lat: latitude,
