@@ -5,6 +5,7 @@ import EventActions from '../../../actions/event';
 import AuthStore from '../../../stores/auth';
 import VenueMap from './map';
 import moment from 'moment';
+import 'moment-countdown';
 
 const VenueImage = ({venue}) => {
   return <img src={venue.image_url} id="venue-image"
@@ -12,9 +13,39 @@ const VenueImage = ({venue}) => {
 };
 
 const SignUp = (props) => {
-  let { capacity, attendees } = props;
-  return <span>{capacity - attendees.length}</span>;
+  let { date, capacity, attendees } = props;
+  return <div>
+    <div>
+      Spots available: {capacity - attendees.length}
+    </div>
+    <CountDown date={ date } />
+    <a href="#" className="btn btn-main">Sign Me Up!</a>
+  </div>;
 };
+
+const CountDown = React.createClass({
+  componentDidMount() {
+    this.tick();
+    this.timer = setInterval(this.tick, 250);
+  },
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  },
+
+  tick() {
+    let { date } = this.props;
+    this.setState({ date });
+  },
+
+  render() {
+    return <div>
+      Time left: { this.state ?
+        moment(this.state.date).countdown().toString() :
+        null }
+    </div>;
+  }
+});
 
 const PromptSignIn = () => {
   return <p>Sign in, would ya?</p>;
@@ -53,7 +84,8 @@ export default React.createClass({
               {description}
             </p>
             { loggedIn ?
-              <SignUp capacity={capacity} attendees={attendees} /> :
+              <SignUp date={date}
+                capacity={capacity} attendees={attendees} /> :
               <PromptSignIn />
             }
           </div>

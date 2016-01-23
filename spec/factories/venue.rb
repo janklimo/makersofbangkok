@@ -6,6 +6,7 @@ FactoryGirl.define do
     longitude 100.123678
     image_url 'http://imgur.com/image.jpg'
     description 'A nice restaurant'
+    url 'http://monsoonbangkok.com/'
   end
 end
 
