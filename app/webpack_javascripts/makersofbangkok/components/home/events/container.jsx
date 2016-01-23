@@ -2,12 +2,22 @@ import React from 'react';
 import Reflux from 'reflux';
 import EventStore from '../../../stores/event';
 import EventActions from '../../../actions/event';
+import AuthStore from '../../../stores/auth';
 import VenueMap from './map';
 import moment from 'moment';
 
 const VenueImage = ({venue}) => {
   return <img src={venue.image_url} id="venue-image"
               alt={`${venue.name} cover image`} />;
+};
+
+const SignUp = (props) => {
+  let { capacity, attendees } = props;
+  return <span>{capacity - attendees.length}</span>;
+};
+
+const PromptSignIn = () => {
+  return <p>Sign in, would ya?</p>;
 };
 
 export default React.createClass({
@@ -19,6 +29,7 @@ export default React.createClass({
 
   render() {
     let { name, venue, date, description, capacity, attendees } = this.state;
+    const loggedIn = AuthStore.loggedIn();
 
     if (!venue) {
       return null;
@@ -31,7 +42,7 @@ export default React.createClass({
             <VenueImage venue={venue} />
             <VenueMap venue={venue} />
           </div>
-          <div className="col-sm-6">
+          <div className="col-sm-6 details">
             <h2>{name}</h2>
             <h3>{moment(date).format('MMMM Do YYYY, h:mm:ss a')}</h3>
             <h3>
@@ -40,9 +51,11 @@ export default React.createClass({
             </h3>
             <p className="description">
               {description}
-              <br />
-              Spots available: {capacity - attendees.length}
             </p>
+            { loggedIn ?
+              <SignUp capacity={capacity} attendees={attendees} /> :
+              <PromptSignIn />
+            }
           </div>
         </div>
     </div>;
