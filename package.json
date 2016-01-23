@@ -20,7 +20,7 @@
     "eslint": "^1.0.0",
     "eslint-loader": "^1.0.0",
     "eslint-plugin-react": "^3.2.0",
-    "google-map-react": "^0.9.3",
+    "google-map-react": "^0.10.3",
     "history": "^1.17.0",
     "jquery": "~2.1.4",
     "lodash": "^3.10.1",
