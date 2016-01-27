@@ -1,6 +1,7 @@
 import Reflux from 'reflux';
 import request from 'superagent';
 import UserActions from '../actions/user';
+import AuthActions from '../actions/auth';
 import AuthStore from '../stores/auth';
 import LoaderActions from '../actions/loader';
 
@@ -76,6 +77,8 @@ export default Reflux.createStore({
     .end((err, res) => {
       LoaderActions.load.completed();
       if (err) {
+        // user token expired, log out
+        AuthActions.logout();
         console.error(err);
       } else {
         UserActions.getUser.completed(res.body.user);
