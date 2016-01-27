@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       }
       resources :users, only: [:show, :update] do
         post :verify, on: :collection
+        resources :registrations, only: :create
       end
       namespace :events do
         get :upcoming

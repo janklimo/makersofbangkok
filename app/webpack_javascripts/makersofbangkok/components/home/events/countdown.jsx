@@ -19,10 +19,11 @@ export default React.createClass({
 
   render() {
     return <div>
-      Time left: { this.state ?
+      <span>Time left: </span>
+      { this.state ?
         moment(this.state.date).countdown().toString() :
-          null }
-        </div>;
+        null }
+    </div>;
   }
 });
 

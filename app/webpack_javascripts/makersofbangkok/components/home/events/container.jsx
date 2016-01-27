@@ -7,17 +7,13 @@ import VenueMap from './map';
 import moment from 'moment';
 import CountDown from './countdown';
 
-const VenueImage = ({venue}) => {
+const VenueImage = ({ venue }) => {
   return <img src={venue.image_url} id="venue-image"
               alt={`${venue.name} cover image`} />;
 };
 
-const SignUp = (props) => {
-  let { date, capacity, attendees } = props;
+const SignUp = ({ date }) => {
   return <div>
-    <div>
-      Spots available: {capacity - attendees.length}
-    </div>
     <CountDown date={ date } />
     <a href="#" className="btn btn-main">Sign Me Up!</a>
   </div>;
@@ -25,6 +21,13 @@ const SignUp = (props) => {
 
 const PromptSignIn = () => {
   return <p>Sign in, would ya?</p>;
+};
+
+const AttendanceBadge = (props) => {
+  let { capacity, attendees } = props;
+  return <span className="badge">
+    {capacity - attendees.length} spots left
+  </span>;
 };
 
 export default React.createClass({
@@ -50,7 +53,8 @@ export default React.createClass({
             <VenueMap venue={venue} />
           </div>
           <div className="col-sm-6 details">
-            <h2>{name}</h2>
+            <span className="name">{name}</span>
+            <AttendanceBadge capacity={capacity} attendees={attendees} />
             <h3>{moment(date).format('MMMM Do YYYY, h:mm:ss a')}</h3>
             <h3>
               <a href={venue.url} target="_blank">{venue.name}</a>
@@ -59,11 +63,7 @@ export default React.createClass({
             <p className="description">
               {description}
             </p>
-            { loggedIn ?
-              <SignUp date={date}
-                capacity={capacity} attendees={attendees} /> :
-              <PromptSignIn />
-            }
+            { loggedIn ? <SignUp date={ date } /> : <PromptSignIn /> }
           </div>
         </div>
     </div>;

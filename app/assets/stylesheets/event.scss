@@ -11,9 +11,15 @@
     margin-bottom: 45px;
   }
 
-  h2 {
+  .name {
     color: $home-teal;
     font-size: 22px;
+    margin-right: 8px;
+  }
+
+  .badge {
+    background-color: $home-orange;
+    vertical-align: super;
   }
 
   h3 {

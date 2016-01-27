@@ -31,7 +31,7 @@ describe Api::V1::UsersController, type: :request do
       before do
         @user = create(:user, email: 'jon@example.com')
       end
-      context 'stanard input' do
+      context 'standard input' do
         before do
           post "/api/v1/users/verify", user_params
         end
