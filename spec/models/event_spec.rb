@@ -9,4 +9,23 @@ describe Event do
       expect(Event.upcoming.name).to eq 'next week'
     end
   end
+  context 'spots_available' do
+    before do
+      @user = create(:user)
+      @event = create(:event, name: 'in 2 weeks', capacity: 20)
+    end
+    context 'no attendees' do
+      it 'returns the right number of available spots' do
+        expect(@event.spots_available).to eq 20
+      end
+    end
+    context 'attendees present' do
+      before do
+        create(:registration, user: @user, event: @event)
+      end
+      it 'returns the right number of available spots' do
+        expect(@event.spots_available).to eq 19
+      end
+    end
+  end
 end

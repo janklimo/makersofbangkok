@@ -6,6 +6,7 @@ class EventDashboard < Administrate::BaseDashboard
     venue: Field::BelongsTo,
     id: Field::Number,
     name: Field::String,
+    spots_available: Field::Number,
     date: Field::DateTime,
     capacity: Field::Number,
     description: Field::Text,
@@ -16,7 +17,8 @@ class EventDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :name,
     :venue,
-    :date
+    :date,
+    :spots_available
   ]
 
   SHOW_PAGE_ATTRIBUTES = ATTRIBUTE_TYPES.keys

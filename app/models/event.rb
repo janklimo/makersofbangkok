@@ -6,4 +6,8 @@ class Event < ActiveRecord::Base
   def self.upcoming
     where('date > ?', DateTime.now).order(:date).first
   end
+
+  def spots_available
+    capacity - attendees.count
+  end
 end
