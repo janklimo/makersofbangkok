@@ -25,15 +25,19 @@ feature 'Events', :js do
             it 'can register and see the right info' do
               visit '/'
               expect(page).to have_content "#{@event.capacity - 1} spots left"
-              expect(page).to have_content 'Time left:'
+              expect(page).to have_content 'Time left'
               expect(page).to have_link 'Sign Me Up!'
             end
           end
           context 'the user is already registered' do
-            xit 'can register and see the right info' do
+            before do
+              create(:registration, event: @event, user: @user)
+            end
+            it 'sees signup confirmation' do
               visit '/'
-              expect(page).to have_content 'Spots available:'
-              expect(page).to have_content @event.capacity
+              expect(page).not_to have_link 'Sign Me Up!'
+              expect(page).to have_content "You're in!"
+              expect(page).to have_content 'See you in'
             end
           end
         end

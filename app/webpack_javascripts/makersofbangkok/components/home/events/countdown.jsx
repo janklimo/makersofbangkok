@@ -18,8 +18,7 @@ export default React.createClass({
   },
 
   render() {
-    return <div>
-      <span>Time left: </span>
+    return <div id="countdown">
       { this.state ?
         moment(this.state.date).countdown().toString() :
         null }

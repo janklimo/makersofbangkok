@@ -6,16 +6,30 @@ import AuthStore from '../../../stores/auth';
 import VenueMap from './map';
 import moment from 'moment';
 import CountDown from './countdown';
+import find from 'lodash/collection/find';
 
 const VenueImage = ({ venue }) => {
   return <img src={venue.image_url} id="venue-image"
               alt={`${venue.name} cover image`} />;
 };
 
-const SignUp = ({ date }) => {
+const SignUp = (props) => {
+  const userId = localStorage.userId;
+  const { date, attendees } = props;
+  const attending = find(attendees, (o) => o.id === parseInt(userId, 10));
+
   return <div>
-    <CountDown date={ date } />
-    <a href="#" className="btn btn-main">Sign Me Up!</a>
+    { attending ? <div>
+        <span className="teal">You're in!</span> See you in:
+        <br />
+        <CountDown date={ date } />
+      </div> : <div>
+        <span>Time left to register:</span>
+        <br />
+        <CountDown date={ date } />
+        <a href="#" className="btn btn-main">Sign Me Up!</a>
+      </div>
+    }
   </div>;
 };
 
@@ -63,7 +77,10 @@ export default React.createClass({
             <p className="description">
               {description}
             </p>
-            { loggedIn ? <SignUp date={ date } /> : <PromptSignIn /> }
+            { loggedIn ?
+              <SignUp date={ date } attendees={ attendees }/> :
+              <PromptSignIn />
+            }
           </div>
         </div>
     </div>;
