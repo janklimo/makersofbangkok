@@ -1,7 +1,9 @@
 import React from 'react';
 import Reflux from 'reflux';
 import EventStore from '../../../stores/event';
+import RegistrationStore from '../../../stores/registration';
 import EventActions from '../../../actions/event';
+import RegistrationActions from '../../../actions/registration';
 import AuthStore from '../../../stores/auth';
 import VenueMap from './map';
 import moment from 'moment';
@@ -13,25 +15,37 @@ const VenueImage = ({ venue }) => {
               alt={`${venue.name} cover image`} />;
 };
 
-const SignUp = (props) => {
-  const userId = localStorage.userId;
-  const { date, attendees } = props;
-  const attending = find(attendees, (o) => o.id === parseInt(userId, 10));
+const SignUp = React.createClass({
+  mixins: [ Reflux.connect(RegistrationStore) ],
 
-  return <div>
-    { attending ? <div>
-        <span className="teal">You're in!</span> See you in:
-        <br />
-        <CountDown date={ date } />
-      </div> : <div>
-        <span>Time left to register:</span>
-        <br />
-        <CountDown date={ date } />
-        <a href="#" className="btn btn-main">Sign Me Up!</a>
+  handleClick(e) {
+    e.preventDefault();
+    const eventId = this.props.eventId;
+    const userId = localStorage.userId;
+    RegistrationActions.createRegistration(userId, eventId);
+  },
+
+  render() {
+    const { date, attendees } = this.props;
+    const userId = localStorage.userId;
+    const attending = find(attendees, o => o.id === parseInt(userId, 10));
+
+    return <div>
+      { attending ? <div>
+          <span className="teal">You're in!</span> See you in:
+          <br />
+          <CountDown date={ date } />
+        </div> : <div>
+          <span>Time left to register:</span>
+          <br />
+          <CountDown date={ date } />
+          <a href="#" className="btn btn-main"
+            onClick={ this.handleClick }>Sign Me Up!</a>
       </div>
-    }
-  </div>;
-};
+      }
+    </div>;
+  }
+});
 
 const PromptSignIn = () => {
   return <p>Sign in, would ya?</p>;
@@ -53,6 +67,7 @@ export default React.createClass({
 
   render() {
     let { name, venue, date, description, capacity, attendees } = this.state;
+    let eventId = this.state.id;
     const loggedIn = AuthStore.loggedIn();
 
     if (!venue) {
@@ -78,7 +93,8 @@ export default React.createClass({
               {description}
             </p>
             { loggedIn ?
-              <SignUp date={ date } attendees={ attendees }/> :
+              <SignUp eventId={ eventId } date={ date }
+                attendees={ attendees }/> :
               <PromptSignIn />
             }
           </div>
