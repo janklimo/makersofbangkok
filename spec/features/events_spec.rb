@@ -2,6 +2,14 @@ feature 'Events', :js do
   background { @user = create(:user) }
   context 'signed in user' do
     include_context "@user is logged in"
+    context 'no upcoming event' do
+      it 'shows the right message' do
+        visit '/'
+        expect(page).to have_content 'Upcoming event'
+        expect(page).to have_content 'No upcoming events yet. Stay tuned!'
+        expect(page).not_to have_css("img[alt*='Monsoon cover image']")
+      end
+    end
     context 'event exists' do
       before do
         @event = create(:event, :with_venue)

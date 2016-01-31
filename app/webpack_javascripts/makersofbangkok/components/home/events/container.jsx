@@ -1,104 +1,30 @@
 import React from 'react';
 import Reflux from 'reflux';
 import EventStore from '../../../stores/event';
-import RegistrationStore from '../../../stores/registration';
 import EventActions from '../../../actions/event';
-import RegistrationActions from '../../../actions/registration';
-import AuthStore from '../../../stores/auth';
-import VenueMap from './map';
-import moment from 'moment';
-import CountDown from './countdown';
-import find from 'lodash/collection/find';
-
-const VenueImage = ({ venue }) => {
-  return <img src={venue.image_url} id="venue-image"
-              alt={`${venue.name} cover image`} />;
-};
-
-const SignUp = React.createClass({
-  mixins: [ Reflux.connect(RegistrationStore) ],
-
-  handleClick(e) {
-    e.preventDefault();
-    const eventId = this.props.eventId;
-    const userId = localStorage.userId;
-    RegistrationActions.createRegistration(userId, eventId);
-  },
-
-  render() {
-    const { date, attendees } = this.props;
-    const userId = localStorage.userId;
-    const attending = find(attendees, o => o.id === parseInt(userId, 10));
-
-    return <div>
-      { attending ? <div>
-          <span className="teal">You're in!</span> See you in:
-          <br />
-          <CountDown date={ date } />
-        </div> : <div>
-          <span>Time left to register:</span>
-          <br />
-          <CountDown date={ date } />
-          <a href="#" className="btn btn-main"
-            onClick={ this.handleClick }>Sign Me Up!</a>
-      </div>
-      }
-    </div>;
-  }
-});
-
-const PromptSignIn = () => {
-  return <p>Sign in, would ya?</p>;
-};
-
-const AttendanceBadge = (props) => {
-  let { capacity, attendees } = props;
-  return <span className="badge">
-    {capacity - attendees.length} spots left
-  </span>;
-};
+import Details from './details';
 
 export default React.createClass({
-  mixins: [ Reflux.connect(EventStore) ],
+  mixins: [ Reflux.connect(EventStore, 'event') ],
+
+  getInitialState() {
+    return { event: null };
+  },
 
   componentDidMount() {
     EventActions.getUpcomingEvent();
   },
 
   render() {
-    let { name, venue, date, description, capacity, attendees } = this.state;
-    let eventId = this.state.id;
-    const loggedIn = AuthStore.loggedIn();
-
-    if (!venue) {
-      return null;
-    }
+    let { event } = this.state;
 
     return <div id="event">
       <h1>Upcoming event</h1>
-        <div className="row">
-          <div className="col-sm-6 no-gutter">
-            <VenueImage venue={venue} />
-            <VenueMap venue={venue} />
-          </div>
-          <div className="col-sm-6 details">
-            <span className="name">{name}</span>
-            <AttendanceBadge capacity={capacity} attendees={attendees} />
-            <h3>{moment(date).format('MMMM Do YYYY, h:mm:ss a')}</h3>
-            <h3>
-              <a href={venue.url} target="_blank">{venue.name}</a>
-              , {venue.address}
-            </h3>
-            <p className="description">
-              {description}
-            </p>
-            { loggedIn ?
-              <SignUp eventId={ eventId } date={ date }
-                attendees={ attendees }/> :
-              <PromptSignIn />
-            }
-          </div>
-        </div>
+      {
+        event ?
+          <Details event={ event } /> :
+          <h3>No upcoming events yet. Stay tuned!</h3>
+      }
     </div>;
   }
 });
