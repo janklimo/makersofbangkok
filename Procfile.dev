@@ -1,2 +1,3 @@
 web: rails s
 webpack: npm start
+sidekiq: bundle exec sidekiq

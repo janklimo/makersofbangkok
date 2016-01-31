@@ -24,6 +24,7 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'active_model_serializers', '~> 0.8'
 gem 'cancancan', '~> 1.10'
 gem 'administrate', '~> 0.1.2'
+gem 'sidekiq'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
