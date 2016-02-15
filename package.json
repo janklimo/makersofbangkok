@@ -2,6 +2,9 @@
   "name": "MakersOfBangkok",
   "description": "Meet people who make stuff happen",
   "version": "0.0.1",
+  "engines": {
+    "node": "5.1.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/janklimo/makersofbangkok.git"
