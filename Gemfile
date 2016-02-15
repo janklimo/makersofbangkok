@@ -26,6 +26,9 @@ gem 'cancancan', '~> 1.10'
 gem 'administrate', '~> 0.1.2'
 gem 'sidekiq'
 
+# Mailchimp
+gem 'mailchimp-api', require: 'mailchimp'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -34,6 +37,9 @@ gem 'sidekiq'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+# needed for tests to run
+gem 'dotenv-rails', groups: [:development, :test]
 
 group :test do
   gem 'rspec-rails'
@@ -52,7 +58,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring', '1.3.6'
   gem 'spring-commands-rspec'
-  gem 'dotenv-rails'
 end
 
 gem 'rails_12factor', group: :production

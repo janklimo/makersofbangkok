@@ -4,6 +4,8 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
+require 'sidekiq/testing'
+
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 module FakePoltergeistLogger

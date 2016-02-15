@@ -10,6 +10,7 @@ module Api
         create_user!
         update_auth_header
         sign_in(:resource, @resource, store: false, bypass: false)
+        MailchimpSubscribeWorker.perform_async(@resource.id)
         render json: @resource, status: 201
       rescue ActiveRecord::RecordInvalid, ActiveRecord::RecordNotUnique
         clean_up_passwords @resource

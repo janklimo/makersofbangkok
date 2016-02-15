@@ -2,6 +2,8 @@ describe Api::V1::Users::RegistrationsController, type: :request do
   describe 'POST /users' do
     context 'params are kosher' do
       before do
+        Sidekiq::Testing.inline!
+        allow(MailchimpSubscribeWorker).to receive(:perform_async)
         post "/api/v1/users", user_params
       end
       it 'creates a user' do
@@ -10,6 +12,8 @@ describe Api::V1::Users::RegistrationsController, type: :request do
         expect(user.referrer_id).to eq 1
         expect(response_body['meta']).to be_nil
         expect(response_body['user']['referrer_id']).to eq 1
+        expect(MailchimpSubscribeWorker).to have_received(:perform_async)
+          .with(user.id)
       end
     end
 
