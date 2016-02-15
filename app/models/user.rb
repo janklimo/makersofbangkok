@@ -19,4 +19,8 @@ class User < ActiveRecord::Base
       save
     end
   end
+
+  def rank
+    User.where("id <= ?", id).count
+  end
 end

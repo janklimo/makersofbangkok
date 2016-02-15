@@ -62,4 +62,15 @@ describe User do
       expect(@user.friends.first.first_name).to eq 'James'
     end
   end
+  context 'rank' do
+    before do
+      @user1 = create(:user)
+      @user2 = create(:user)
+      @user3 = create(:user)
+      @user2.destroy
+    end
+    it 'returns the right rank' do
+      expect(@user3.reload.rank).to eq 2
+    end
+  end
 end

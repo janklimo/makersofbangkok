@@ -1,5 +1,9 @@
 feature 'Landing Page', :js do
-  background { @user = create(:user) }
+  background do
+    @test_user = create(:user)
+    @test_user.destroy
+    @user = create(:user)
+  end
   context 'user is not signed in' do
     scenario 'visits landing page' do
       visit '/'
@@ -21,7 +25,7 @@ feature 'Landing Page', :js do
       it "shows user's ID" do
         visit '/'
         expect(page).to have_content "Welcome, #{@user.first_name}!"
-        expect(page).to have_content "##{@user.id}"
+        expect(page).to have_content "##{@user.rank}"
       end
       context 'forever alone' do
         it 'shows the right message' do

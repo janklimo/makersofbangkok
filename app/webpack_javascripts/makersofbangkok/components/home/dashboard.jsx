@@ -44,7 +44,7 @@ export default React.createClass({
   },
 
   render() {
-    let { id, email, first_name } = this.state;
+    let { rank, email, first_name } = this.state;
     let friends = this.state.friends;
 
     return <div id="dashboard">
@@ -55,7 +55,7 @@ export default React.createClass({
         Thank you for being Bangkok's maker
       </p>
       <div className="medal">
-        <span className="label">#{id}</span>
+        <span className="label">#{rank}</span>
       </div>
       <FriendsMessage friends={friends} email={email}
         firstName={first_name} />
