@@ -2,11 +2,12 @@ import React from 'react';
 import SignupModal from './signup_modal';
 import Navbar from './navbar';
 const s3 = 'https://s3-ap-southeast-1.amazonaws.com/makersofbangkok';
+const factor = 0.9;
 
 export default React.createClass({
   getInitialState() {
     return {
-      windowHeight: window.innerHeight,
+      windowHeight: window.innerHeight * factor,
       showModal: false
     };
   },
@@ -20,7 +21,7 @@ export default React.createClass({
   },
 
   handleResize() {
-    this.setState({ windowHeight: window.innerHeight });
+    this.setState({ windowHeight: window.innerHeight * factor });
   },
 
   componentDidMount() {
@@ -67,6 +68,28 @@ export default React.createClass({
           </div>
         </div>
         <SignupModal show={this.state.showModal} onHide={this.closeModal}/>
+      </section>
+      <section id="what-its-about">
+        <div className="container">
+          <div className="row">
+            <h1>What It's All About</h1>
+            <div className="col-sm-4">
+              <div className="section-subheader">
+                <i className="fa fa-envelope"></i>
+              </div>
+            </div>
+            <div className="col-sm-4">
+              <div className="section-subheader">
+                <i className="fa fa-users"></i>
+              </div>
+            </div>
+            <div className="col-sm-4">
+              <div className="section-subheader">
+                <i className="fa fa-lightbulb-o"></i>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </div>;
   }

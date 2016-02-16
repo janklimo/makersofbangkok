@@ -6,8 +6,26 @@
   color: #FFFFFF;
 }
 
+#what-its-about {
+  background: $home-teal;
+  min-height: 250px;
+  color: white;
+  padding: 20px 0;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .section-subheader {
+    text-align: center;
+    .fa {
+      font-size: 50px;
+    }
+  }
+}
+
 .logo-container {
-  margin-top: 110px;
+  margin-top: 40px;
 
   @media(max-width:767px){
     margin-top: 25px;
@@ -85,7 +103,7 @@
   }
 }
 
-@media(max-width:440px){
+@media(max-width:590px){
   .logo-container {
     #logo{
       max-width: 70px;

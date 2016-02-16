@@ -25,18 +25,8 @@ gem 'active_model_serializers', '~> 0.8'
 gem 'cancancan', '~> 1.10'
 gem 'administrate', '~> 0.1.2'
 gem 'sidekiq'
-
-# Mailchimp
 gem 'mailchimp-api', require: 'mailchimp'
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'font-awesome-rails'
 
 # needed for tests to run
 gem 'dotenv-rails', groups: [:development, :test]

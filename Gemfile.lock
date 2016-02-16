@@ -106,6 +106,8 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    font-awesome-rails (4.5.0.1)
+      railties (>= 3.2, < 5.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     hitimes (1.2.2)
@@ -275,6 +277,7 @@ DEPENDENCIES
   devise_token_auth (= 0.1.32.beta9)
   dotenv-rails
   factory_girl_rails
+  font-awesome-rails
   jbuilder (~> 2.0)
   launchy
   mailchimp-api
