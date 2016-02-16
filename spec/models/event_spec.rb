@@ -19,6 +19,16 @@ describe Event do
         expect(@event.spots_available).to eq 20
       end
     end
+    context 'sold out' do
+      before do
+        @event.update(capacity: 1)
+        create(:registration, user: create(:user), event: @event)
+        create(:registration, user: create(:user), event: @event)
+      end
+      it 'returns 0' do
+        expect(@event.spots_available).to eq 0
+      end
+    end
     context 'attendees present' do
       before do
         create(:registration, user: @user, event: @event)

@@ -8,6 +8,7 @@ class Event < ActiveRecord::Base
   end
 
   def spots_available
-    capacity - attendees.count
+    capacity - attendees.count >= 0 ?
+      capacity - attendees.count : 0
   end
 end

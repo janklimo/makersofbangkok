@@ -13,10 +13,11 @@ const PromptSignIn = () => {
   return <p>Sign in, would ya?</p>;
 };
 
-const AttendanceBadge = (props) => {
-  let { capacity, attendees } = props;
+const AttendanceBadge = ({spotsLeft}) => {
+  let quantifier = spotsLeft === 1 ?
+    'spot' : 'spots';
   return <span className="badge">
-    {capacity - attendees.length} spots left
+    { spotsLeft } { quantifier } left
   </span>;
 };
 
@@ -28,8 +29,8 @@ export default React.createClass({
       return null;
     }
 
-    let { name, venue, date, description,
-      capacity, attendees } = event;
+    let { name, venue, date, description, attendees } = event;
+    let spotsLeft = event.spots_available;
     let eventId = event.id;
     const loggedIn = AuthStore.loggedIn();
 
@@ -40,7 +41,7 @@ export default React.createClass({
       </div>
       <div className="col-sm-6 details">
         <span className="name">{name}</span>
-        <AttendanceBadge capacity={capacity} attendees={attendees} />
+        <AttendanceBadge spotsLeft={spotsLeft} />
         <h3>{moment(date).format('MMMM Do YYYY, h:mm:ss a')}</h3>
         <h3>
           <a href={venue.url} target="_blank">{venue.name}</a>
@@ -51,7 +52,7 @@ export default React.createClass({
         </p>
         { loggedIn ?
           <SignUp eventId={ eventId } date={ date }
-            attendees={ attendees }/> :
+            attendees={ attendees } spotsLeft={ spotsLeft }/> :
           <PromptSignIn />
         }
       </div>

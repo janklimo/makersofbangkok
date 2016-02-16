@@ -36,6 +36,18 @@ feature 'Events', :js do
               expect(page).to have_content 'Time left'
               expect(page).to have_link 'Sign Me Up!'
             end
+            context 'event is booked out' do
+              before do
+                @event.update(capacity: 1)
+                @reg2 = create(:registration, user: create(:user), event: @event)
+              end
+              it 'shows 0 spots left and no Sign up button' do
+                visit '/'
+                expect(page).to have_content "0 spots left"
+                expect(page).not_to have_link "Sign Me Up!"
+                expect(page).to have_content "The event is all booked out :("
+              end
+            end
           end
           context 'the user is already registered' do
             before do
