@@ -49,21 +49,18 @@ export default React.createClass({
               <h1>Makers of Bangkok</h1>
             </div>
           </div>
-          <div className="row">
-            <div className="intro text-center">
-              <p>We&#39;re entrepreneurs, programmers, designers,
-                photographers, event organizers.<br />
-                What we have in common is our passion for building,
-                creating, and making things happen.
-                <br /><br />
-                Sounds like you?</p>
-            </div>
-          </div>
-          <div className="row">
-            <div className="cta text-center">
-              <a href="#" className="btn btn-main" onClick={this.openModal}>
-                Join Us!
-              </a>
+          <div className="intro text-center">
+            <div>We&#39;re entrepreneurs, programmers, designers,
+              photographers, event organizers.<br />
+              What we have in common is our passion for building,
+              creating, and making things happen.
+              <br /><br />
+              Sounds like you?
+              <div className="cta text-center">
+                <a href="#" className="btn btn-main" onClick={this.openModal}>
+                  Join Us!
+                </a>
+              </div>
             </div>
           </div>
         </div>

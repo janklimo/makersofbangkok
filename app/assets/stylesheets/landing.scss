@@ -4,6 +4,7 @@
   background-position: center top;
   height: 400px;
   color: #FFFFFF;
+  position: relative;
 }
 
 #what-its-about {
@@ -128,5 +129,9 @@
 
   .intro {
     font-size: 17px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
   }
 }
