@@ -37,7 +37,7 @@ export default React.createClass({
     return <div>
       <Navbar />
       <section id="home" style={ bgStyle }>
-        <div className="container">
+        <div className="container" id="landing-container">
           <div className="row">
             <div className="logo-container text-center">
               <img id="logo" src={`${s3}/logo.png`} />
