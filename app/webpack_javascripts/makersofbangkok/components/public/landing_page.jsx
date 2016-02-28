@@ -26,6 +26,7 @@ export default React.createClass({
 
   componentDidMount() {
     window.addEventListener('resize', this.handleResize);
+    // needed to properly resize the bg on mobile
     setTimeout(() => {
       this.setState({ windowHeight: window.innerHeight * factor });
     }, 400);
@@ -44,7 +45,6 @@ export default React.createClass({
           <div className="row">
             <div className="logo-container text-center">
               <img id="logo" src={`${s3}/logo.png`} />
-              { window.innerHeight }
             </div>
           </div>
           <div className="row">
