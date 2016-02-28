@@ -42,6 +42,7 @@ export default React.createClass({
           <div className="row">
             <div className="logo-container text-center">
               <img id="logo" src={`${s3}/logo.png`} />
+              { window.innerHeight }
             </div>
           </div>
           <div className="row">
