@@ -26,6 +26,7 @@ export default React.createClass({
 
   componentDidMount() {
     window.addEventListener('resize', this.handleResize);
+    this.setState({ windowHeight: window.innerHeight * factor });
   },
 
   componentWillUnmount() {
