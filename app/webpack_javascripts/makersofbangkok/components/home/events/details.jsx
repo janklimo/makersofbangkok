@@ -4,6 +4,11 @@ import VenueMap from './map';
 import moment from 'moment';
 import SignUp from './sign_up';
 
+const VenueImage = ({ venue }) => {
+  return <img src={venue.image_url} id="venue-image"
+    alt={`${venue.name} cover image`} />;
+};
+
 const PromptSignIn = () => {
   return <p>Sign in, would ya?</p>;
 };
@@ -30,7 +35,8 @@ export default React.createClass({
     const loggedIn = AuthStore.loggedIn();
 
     return <div className="row">
-      <div className="col-sm-6 no-gutter">
+      <div className="col-sm-6">
+        <VenueImage venue={venue} />
         <VenueMap venue={venue} />
       </div>
       <div className="col-sm-6 details">
