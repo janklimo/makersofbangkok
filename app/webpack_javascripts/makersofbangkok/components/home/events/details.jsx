@@ -1,6 +1,5 @@
 import React from 'react';
 import AuthStore from '../../../stores/auth';
-import VenueMap from './map';
 import moment from 'moment';
 import SignUp from './sign_up';
 
@@ -37,7 +36,6 @@ export default React.createClass({
     return <div className="row">
       <div className="col-sm-6 no-gutter">
         <VenueImage venue={venue} />
-        <VenueMap venue={venue} />
       </div>
       <div className="col-sm-6 details">
         <span className="name">{name}</span>
