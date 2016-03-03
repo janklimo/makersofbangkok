@@ -19,13 +19,27 @@
 
   h1 {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
   }
   .section-subheader {
     text-align: center;
+    padding-top: 30px;
     .fa {
       font-size: 50px;
+      color: $home-navy;
     }
+  }
+  .section-title {
+    text-align: center;
+    font-size: 20px;
+    padding: 30px 0 12px;
+
+    @media(min-width:767px){
+      height: 90px;
+    }
+  }
+  .section-text {
+    padding: 15px;
   }
 }
 
@@ -33,7 +47,7 @@
   margin-top: 40px;
 
   @media(max-width:767px){
-    margin-top: 25px;
+    margin-top: 15px;
   }
 
   #logo {
@@ -117,7 +131,7 @@
 
   .taglines {
     h1 {
-      font-size: 37px;
+      font-size: 34px;
     }
 
     h2 {
@@ -132,7 +146,7 @@
   }
 
   .intro {
-    font-size: 17px;
+    font-size: 16px;
     width: 100%;
     position: absolute;
     bottom: 0;
