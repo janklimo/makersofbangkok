@@ -3,7 +3,7 @@ export default () => {
     <div className="container">
       <div className="row">
         <h1>What It's All About</h1>
-        <div className="col-sm-4">
+        <div className="col-sm-4 no-gutter">
           <div className="section-subheader">
             <i className="fa fa-envelope"></i>
           </div>
@@ -17,7 +17,7 @@ export default () => {
             benefit from meeting.
           </div>
         </div>
-        <div className="col-sm-4">
+        <div className="col-sm-4 no-gutter">
           <div className="section-subheader">
             <i className="fa fa-users"></i>
           </div>
@@ -30,7 +30,7 @@ export default () => {
             attendees.
           </div>
         </div>
-        <div className="col-sm-4">
+        <div className="col-sm-4 no-gutter">
           <div className="section-subheader">
             <i className="fa fa-lightbulb-o"></i>
           </div>
