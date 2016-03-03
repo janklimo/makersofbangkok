@@ -50,7 +50,7 @@ export default React.createClass({
     let bgStyle = { height: this.state.windowHeight };
     return <div>
       <Navbar top={ this.state.scrollTop } />
-      <section id="home" style={ bgStyle }>
+      <section id="home" className="no-gutter" style={ bgStyle }>
         <div className="container" id="landing-container">
           <div className="row">
             <div className="logo-container text-center">
