@@ -18,13 +18,13 @@ export default React.createClass({
   render() {
     let { event } = this.state;
 
-    return <div id="event">
+    return <section id="event">
       <h1>Upcoming event</h1>
       {
         event ?
           <Details event={ event } /> :
           <h3>No upcoming events yet. Stay tuned!</h3>
       }
-    </div>;
+    </section>;
   }
 });
