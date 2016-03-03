@@ -17,10 +17,15 @@
   box-shadow: none;
 }
 
-#navbar-home {
+#navbar-logo {
+  opacity: 0;
+}
+
+.navbar-home {
   &.navbar-default {
     background: $home-navy;
     border-top: 3px solid $home-orange;
+    transition: all 0.3s ease-in;
   }
 
   .logo-wrapper {
@@ -29,9 +34,11 @@
     left: 0;
   }
 
-  #logo {
+  #navbar-logo {
+    opacity: 1;
     width: 65px;
     position: relative;
     top: -33px;
+    transition: all 0.3s ease-in;
   }
 }

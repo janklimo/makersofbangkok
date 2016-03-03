@@ -5,6 +5,7 @@ import SigninModal from './signin_modal';
 import AuthStore from '../../stores/auth';
 import AuthActions from '../../actions/auth';
 import { Link } from 'react-router';
+const s3 = 'https://s3-ap-southeast-1.amazonaws.com/makersofbangkok';
 
 export default React.createClass({
   mixins: [ Reflux.connect(AuthStore) ],
@@ -33,6 +34,9 @@ export default React.createClass({
     let authNavItem;
     let dashboardNavItem;
 
+    let { top } = this.props;
+    let navbarClass = top > 100 ? 'navbar-home' : null;
+
     if (loggedIn) {
       authNavItem = <NavItem eventKey={1} onClick={this.handleSignOut}
                       href="#">Sign Out</NavItem>;
@@ -43,7 +47,7 @@ export default React.createClass({
       authNavItem = <NavItem eventKey={1} onClick={this.openModal}
                       href="#">Sign In</NavItem>;
     }
-    return <Navbar id="navbar-public" fixedTop>
+    return <Navbar id="navbar-public" className={ navbarClass } fixedTop>
       <Navbar.Header>
         <Navbar.Toggle />
       </Navbar.Header>
@@ -53,6 +57,10 @@ export default React.createClass({
           {authNavItem}
         </Nav>
       </Navbar.Collapse>
+      <div className="logo-wrapper">
+        <img id="navbar-logo" className="center-block"
+          src={`${s3}/logo.png`} />
+      </div>
       <SigninModal show={this.state.showModal} onHide={this.closeModal}/>
     </Navbar>;
   }

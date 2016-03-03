@@ -1,6 +1,8 @@
 import React from 'react';
 import SignupModal from './signup_modal';
 import Navbar from './navbar';
+import WhatItsAbout from './what_its_about';
+import UpcomingEvent from '../home/events/container';
 const s3 = 'https://s3-ap-southeast-1.amazonaws.com/makersofbangkok';
 const factor = 0.9;
 
@@ -8,7 +10,8 @@ export default React.createClass({
   getInitialState() {
     return {
       windowHeight: window.innerHeight * factor,
-      showModal: false
+      showModal: false,
+      scrollTop: 0
     };
   },
 
@@ -24,8 +27,14 @@ export default React.createClass({
     this.setState({ windowHeight: window.innerHeight * factor });
   },
 
+  handleScroll(event) {
+    let scrollTop = event.srcElement.body.scrollTop;
+    this.setState({ scrollTop });
+  },
+
   componentDidMount() {
     window.addEventListener('resize', this.handleResize);
+    window.addEventListener('scroll', this.handleScroll);
     // needed to properly resize the bg on mobile
     setTimeout(() => {
       this.setState({ windowHeight: window.innerHeight * factor });
@@ -34,12 +43,13 @@ export default React.createClass({
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleResize);
+    window.removeEventListener('scroll', this.handleScroll);
   },
 
   render() {
     let bgStyle = { height: this.state.windowHeight };
     return <div>
-      <Navbar />
+      <Navbar top={ this.state.scrollTop } />
       <section id="home" style={ bgStyle }>
         <div className="container" id="landing-container">
           <div className="row">
@@ -70,56 +80,8 @@ export default React.createClass({
         </div>
         <SignupModal show={this.state.showModal} onHide={this.closeModal}/>
       </section>
-      <section id="what-its-about">
-        <div className="container">
-          <div className="row">
-            <h1>What It's All About</h1>
-            <div className="col-sm-4">
-              <div className="section-subheader">
-                <i className="fa fa-envelope"></i>
-              </div>
-              <div className="section-title">
-                Invitation Only
-              </div>
-              <div className="section-text">
-                Membership is not open to public. We leave it up to our users
-                to invite people they like and respect. Inviting a new member
-                is a sign of trust that it's a person other members will
-                benefit from meeting.
-              </div>
-            </div>
-            <div className="col-sm-4">
-              <div className="section-subheader">
-                <i className="fa fa-users"></i>
-              </div>
-              <div className="section-title">
-                Small Groups
-              </div>
-              <div className="section-text">
-                Attendance is normally limited to 10 people. This way,
-                everybody gets a chance to meet and connect with all the other
-                attendees.
-              </div>
-            </div>
-            <div className="col-sm-4">
-              <div className="section-subheader">
-                <i className="fa fa-lightbulb-o"></i>
-              </div>
-              <div className="section-title">
-                Meaningful Conversations
-              </div>
-              <div className="section-text">
-                While meetups have no formal structure, we do make sure that
-                everybody gets a chance to introduce themselves, speak about
-                what they're excited about, tell others about the problems
-                they are trying to solve, or need help with. Get instant
-                feedback, ideas, intros = the most value out of one evening
-                possible.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <WhatItsAbout />
+      <UpcomingEvent />
     </div>;
   }
 });

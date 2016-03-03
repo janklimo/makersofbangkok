@@ -13,7 +13,7 @@ export default React.createClass({
   },
 
   render() {
-    return <Navbar id="navbar-home" fixedTop>
+    return <Navbar className="navbar-home" fixedTop>
       <Navbar.Header>
         <Navbar.Toggle />
       </Navbar.Header>
@@ -25,7 +25,8 @@ export default React.createClass({
         </Nav>
       </Navbar.Collapse>
       <div className="logo-wrapper">
-        <img id="logo" className="center-block" src={`${s3}/logo.png`} />
+        <img id="navbar-logo" className="center-block"
+          src={`${s3}/logo.png`} />
       </div>
     </Navbar>;
   }
