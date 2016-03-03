@@ -51,16 +51,20 @@ export default React.createClass({
     return <div>
       <Navbar top={ this.state.scrollTop } />
       <section id="home" style={ bgStyle }>
-        <div className="container">
+        <div className="container" id="landing-container">
           <div className="row">
-            <div className="logo-container text-center">
-              <img id="logo" src={`${s3}/logo.png`} />
+            <div className="col-sm-12">
+              <div className="logo-container text-center">
+                <img id="logo" src={`${s3}/logo.png`} />
+              </div>
             </div>
           </div>
           <div className="row">
-            <div className="taglines text-center">
-              <h2>We are</h2>
-              <h1>Makers of Bangkok</h1>
+            <div className="col-sm-12">
+              <div className="taglines text-center">
+                <h2>We are</h2>
+                <h1>Makers of Bangkok</h1>
+              </div>
             </div>
           </div>
           <div className="intro text-center">
