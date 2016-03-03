@@ -35,7 +35,7 @@ export default React.createClass({
     const loggedIn = AuthStore.loggedIn();
 
     return <div className="row">
-      <div className="col-sm-6">
+      <div className="col-sm-6 no-gutter">
         <VenueImage venue={venue} />
         <VenueMap venue={venue} />
       </div>
