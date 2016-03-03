@@ -1,5 +1,5 @@
 export default () => {
-  return <section id="what-its-about" className="no-gutter">
+  return <section id="what-its-about">
     <div className="container">
       <div className="row">
         <h1>What It's All About</h1>
