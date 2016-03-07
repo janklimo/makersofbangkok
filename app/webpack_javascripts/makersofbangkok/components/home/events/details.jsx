@@ -34,13 +34,13 @@ export default React.createClass({
     let eventId = event.id;
     const loggedIn = AuthStore.loggedIn();
 
-    return <div className="container">
+    return <div className="container-fluid">
       <div className="row">
-        <div className="col-sm-6">
+        <div className="col-sm-6 no-gutter">
           <VenueImage venue={venue} />
           <VenueMap venue={venue} />
         </div>
-        <div className="col-sm-6 details">
+        <div className="col-sm-6 details no-gutter">
           <span className="name">{name}</span>
           <AttendanceBadge spotsLeft={spotsLeft} />
           <h3>{moment(date).format('MMMM Do YYYY, h:mm:ss a')}</h3>
