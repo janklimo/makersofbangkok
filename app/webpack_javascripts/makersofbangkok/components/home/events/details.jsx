@@ -34,27 +34,29 @@ export default React.createClass({
     let eventId = event.id;
     const loggedIn = AuthStore.loggedIn();
 
-    return <div className="row">
-      <div className="col-sm-6 no-gutter">
-        <VenueImage venue={venue} />
-        <VenueMap venue={venue} />
-      </div>
-      <div className="col-sm-6 details">
-        <span className="name">{name}</span>
-        <AttendanceBadge spotsLeft={spotsLeft} />
-        <h3>{moment(date).format('MMMM Do YYYY, h:mm:ss a')}</h3>
-        <h3>
-          <a href={venue.url} target="_blank">{venue.name}</a>
-          , {venue.address}
-        </h3>
-        <p className="description">
-          {description}
-        </p>
-        { loggedIn ?
-          <SignUp eventId={ eventId } date={ date }
-            attendees={ attendees } spotsLeft={ spotsLeft }/> :
-          <PromptSignIn />
-        }
+    return <div className="container">
+      <div className="row">
+        <div className="col-sm-6">
+          <VenueImage venue={venue} />
+          <VenueMap venue={venue} />
+        </div>
+        <div className="col-sm-6 details">
+          <span className="name">{name}</span>
+          <AttendanceBadge spotsLeft={spotsLeft} />
+          <h3>{moment(date).format('MMMM Do YYYY, h:mm:ss a')}</h3>
+          <h3>
+            <a href={venue.url} target="_blank">{venue.name}</a>
+            , {venue.address}
+          </h3>
+          <p className="description">
+            {description}
+          </p>
+          { loggedIn ?
+            <SignUp eventId={ eventId } date={ date }
+              attendees={ attendees } spotsLeft={ spotsLeft }/> :
+            <PromptSignIn />
+          }
+        </div>
       </div>
     </div>;
   }
