@@ -39,11 +39,11 @@ export default () => {
           </div>
           <div className="section-text">
             While meetups have no formal structure, we do make sure that
-            everybody gets a chance to introduce themselves, speak about
-            what they're excited about, tell others about the problems
-            they are trying to solve, or need help with. Get instant
-            feedback, ideas, intros = the most value out of one evening
-            possible.
+            everybody gets a chance to speak about things they are passionate
+            about, as well as tell others about the problems they are
+            currently trying to solve, or need help with. Get instant
+            feedback, ideas, intros - the most value out of one
+            evening possible.
           </div>
         </div>
       </div>

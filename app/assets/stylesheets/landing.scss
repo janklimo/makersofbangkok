@@ -17,6 +17,10 @@
   color: white;
   padding: 20px 0 40px;
 
+  #jan {
+    width: 175px;
+  }
+
   h1 {
     text-align: center;
     margin-bottom: 20px;
@@ -29,17 +33,22 @@
       color: $home-navy;
     }
   }
-  .section-title {
+  .section-title, .about-title {
     text-align: center;
     font-size: 20px;
     padding: 30px 0 12px;
-
-    @media(min-width:767px){
-      height: 90px;
-    }
   }
   .section-text {
     padding: 15px;
+    p {
+      padding: 6px 0;
+    }
+  }
+}
+
+@media(min-width:767px){
+  .section-title {
+    height: 90px;
   }
 }
 

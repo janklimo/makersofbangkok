@@ -2,6 +2,7 @@ import React from 'react';
 import SignupModal from './signup_modal';
 import Navbar from './navbar';
 import WhatItsAbout from './what_its_about';
+import About from './about';
 import UpcomingEvent from '../home/events/container';
 const s3 = 'https://s3-ap-southeast-1.amazonaws.com/makersofbangkok';
 const factor = 0.9;
@@ -86,6 +87,7 @@ export default React.createClass({
       </section>
       <WhatItsAbout />
       <UpcomingEvent />
+      <About openModal={this.openModal}/>
     </div>;
   }
 });

@@ -10,7 +10,7 @@ const VenueImage = ({ venue }) => {
 };
 
 const PromptSignIn = () => {
-  return <p>Sign in, would ya?</p>;
+  return <p>Please sign in or register to attend this event.</p>;
 };
 
 const AttendanceBadge = ({spotsLeft}) => {
