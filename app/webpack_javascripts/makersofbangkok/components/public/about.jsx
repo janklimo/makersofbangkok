@@ -17,12 +17,23 @@ export default (props) => {
               I'm Jan, an entrepreneur and software developer living in Bangkok.
             </p>
             <p>
-              Makers of Bangkok is my way to bring amazing creative people
+              Makers of Bangkok is my way of bringing amazing creative people
               together, let them have great conversations, create lasting
               connections, and make things happen with each other's help.
             </p>
             <p>
-              Can't wait to meet you on our next event!
+              Do you feel like traditional mass networking events, smalltalk,
+              exchanging business cards are a waste of time? So do I, but
+              it doesn't have to be that way.
+            </p>
+            <p>
+              With Makers of Bangkok, we're creating a diverse network of
+              people who do things differently.
+              Join us and help us grow this unique community capable of great
+              things!
+            </p>
+            <p>
+              Can't wait to meet you at our next event :)
             </p>
           </div>
           <div className="cta text-center">
