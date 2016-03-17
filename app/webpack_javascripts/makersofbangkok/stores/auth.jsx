@@ -91,6 +91,10 @@ export default Reflux.createStore({
     .end((err) => {
       if (err) {
         console.error('Logout error', err);
+        this.user = {};
+        this.trigger(this.user);
+        this.credentials = {};
+        history.replaceState(null, '/');
       } else {
         this.user = {};
         this.trigger(this.user);
