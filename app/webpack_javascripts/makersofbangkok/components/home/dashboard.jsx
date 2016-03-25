@@ -5,6 +5,7 @@ import UserStore from '../../stores/user';
 import UserActions from '../../actions/user';
 import welcomeEmail from './welcome_email';
 import EventContainer from './events/container';
+import SoftLaunchBadge from './soft_launch_badge';
 
 const FriendsMessage = (props) => {
   let { friends, email, firstName } = props;
@@ -44,7 +45,7 @@ export default React.createClass({
   },
 
   render() {
-    let { rank, email, first_name } = this.state;
+    let { id, rank, email, first_name } = this.state;
     let friends = this.state.friends;
 
     return <div id="dashboard">
@@ -57,6 +58,7 @@ export default React.createClass({
       <div className="medal">
         <span className="label">#{rank}</span>
       </div>
+      <SoftLaunchBadge id={ id } />
       <FriendsMessage friends={friends} email={email}
         firstName={first_name} />
       <EventContainer />

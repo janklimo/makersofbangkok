@@ -34,4 +34,13 @@
   #greeting {
     font-size: 34px;
   }
+
+  #soft-launch-badge {
+    margin: 28px auto 20px;
+
+    .fa {
+      font-size: 2.2rem;
+      color: $home-navy;
+    }
+  }
 }

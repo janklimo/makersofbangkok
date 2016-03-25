@@ -3,7 +3,7 @@ feature 'New registration', :js do
   scenario 'failed email verification' do
     visit '/'
     expect(page).to have_content 'Makers of Bangkok'
-    click_link('Join Us!')
+    first(:link, 'Join Us!').click
     expect(page).to have_content 'invitation-only'
     fill_in 'referrer-email', with: 'wrong@email.com'
     click_button 'Verify'
@@ -60,7 +60,7 @@ end
 def get_verified
   visit '/'
   expect(page).to have_content 'Makers of Bangkok'
-  click_link('Join Us!')
+  first(:link, 'Join Us!').click
   expect(page).to have_content 'invitation-only'
   fill_in 'referrer-email', with: @user.email
   click_button 'Verify'
