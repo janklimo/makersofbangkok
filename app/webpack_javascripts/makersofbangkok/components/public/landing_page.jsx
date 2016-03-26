@@ -73,8 +73,6 @@ export default React.createClass({
               photographers, event organizers.<br />
               What we have in common is our passion for building,
               creating, and making things happen.
-              <br /><br />
-              Sounds like you?
               <div className="cta text-center">
                 <a href="#" className="btn btn-main" onClick={this.openModal}>
                   Join Us!
